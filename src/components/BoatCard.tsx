@@ -9,10 +9,11 @@ interface BoatCardProps {
   power: string;
   license: string;
   price: number;
+  priceLabel?: string;
   onBook: () => void;
 }
 
-const BoatCard = ({ name, image, description, capacity, power, license, price, onBook }: BoatCardProps) => {
+const BoatCard = ({ name, image, description, capacity, power, license, price, priceLabel, onBook }: BoatCardProps) => {
   return (
     <div className="group bg-card rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 flex flex-col">
       {/* Image */}
@@ -26,6 +27,11 @@ const BoatCard = ({ name, image, description, capacity, power, license, price, o
         <div className="absolute top-4 right-4 bg-gold text-gold-foreground font-body font-bold px-3 py-1 rounded-md text-sm">
           Desde {price}€
         </div>
+        {priceLabel && (
+          <div className="absolute bottom-4 left-4 bg-navy/80 text-navy-foreground font-body font-medium px-3 py-1 rounded-md text-xs backdrop-blur-sm">
+            {priceLabel}
+          </div>
+        )}
       </div>
 
       {/* Content */}

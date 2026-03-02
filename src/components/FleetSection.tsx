@@ -5,24 +5,26 @@ import astiluxImg from "@/assets/astilux-600.jpg";
 
 const boats = [
   {
-    name: "Nireus 620",
+    name: "Nireus 620 CL",
     image: nireusImg,
     description:
       "Navega con la máxima agilidad a bordo de nuestra Nireus 620, una lancha diseñada para volar sobre las olas de Sitges. Su casco deportivo garantiza una aceleración inmediata y una estabilidad superior.",
     capacity: 10,
     power: "200 CV",
     license: "Licencia de Navegación",
-    price: 470,
+    price: 270,
+    priceLabel: "4h: 270€ · 8h: 470€",
   },
   {
-    name: "Okyboats Barracuda 545",
+    name: "OKIBOATS Barracuda 595",
     image: barracudaImg,
     description:
-      "Siente la velocidad pura con la Barracuda 545, la embarcación más ligera y reactiva de nuestra flota en Port Ginesta. Ideal para recorrer grandes distancias en tiempo récord.",
+      "Siente la velocidad pura con la Barracuda 595, la embarcación más ligera y reactiva de nuestra flota en Port Ginesta. Ideal para recorrer grandes distancias en tiempo récord.",
     capacity: 7,
     power: "100 CV",
     license: "Licencia de Navegación",
-    price: 370,
+    price: 200,
+    priceLabel: "4h: 200€ · 8h: 310€",
   },
   {
     name: "Astilux AX 600 Open",
@@ -32,7 +34,8 @@ const boats = [
     capacity: 7,
     power: "100 CV",
     license: "Licencia de Navegación",
-    price: 370,
+    price: 225,
+    priceLabel: "4h: 225€ · 8h: 340€",
   },
 ];
 
