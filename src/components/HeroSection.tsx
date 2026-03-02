@@ -30,9 +30,9 @@ const HeroSection = () => {
           Port Ginesta · Sitges · Costa del Garraf
         </p>
         <h1 className="animate-fade-up-delay-1 font-display text-4xl sm:text-5xl lg:text-7xl font-bold text-navy-foreground leading-tight max-w-4xl mx-auto">
-          Vive el Mediterráneo
+          NáuticaNegobà
           <br />
-          <span className="text-gold">desde cubierta</span>
+          <span className="text-gold">Navega sin límites</span>
         </h1>
         <p className="animate-fade-up-delay-2 font-body text-lg sm:text-xl text-navy-foreground/80 mt-6 max-w-2xl mx-auto leading-relaxed">
           Alquila tu embarcación ideal y descubre las calas más exclusivas de la costa catalana. Sin complicaciones, solo mar y libertad.
