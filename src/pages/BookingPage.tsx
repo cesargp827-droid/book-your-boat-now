@@ -98,7 +98,7 @@ const BookingPage = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Top bar */}
-      <div className="bg-navy text-navy-foreground">
+      <div className="bg-primary text-ocean-foreground">
         <div className="container mx-auto px-4 py-4 flex items-center gap-4">
           <button
             onClick={() => navigate("/")}
