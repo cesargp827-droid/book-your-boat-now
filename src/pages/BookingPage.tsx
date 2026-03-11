@@ -98,16 +98,16 @@ const BookingPage = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Top bar */}
-      <div className="bg-navy text-navy-foreground">
+      <div className="bg-primary text-ocean-foreground">
         <div className="container mx-auto px-4 py-4 flex items-center gap-4">
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-navy-foreground/70 hover:text-navy-foreground transition-colors font-body text-sm"
+            className="flex items-center gap-2 text-ocean-foreground/70 hover:text-ocean-foreground transition-colors font-body text-sm"
           >
             <ArrowLeft className="h-4 w-4" />
             Volver
           </button>
-          <div className="h-5 w-px bg-navy-foreground/20" />
+          <div className="h-5 w-px bg-ocean-foreground/20" />
           <h1 className="font-display text-lg font-bold">Reserva tu Experiencia</h1>
         </div>
       </div>
