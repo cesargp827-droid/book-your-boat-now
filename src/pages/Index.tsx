@@ -1,11 +1,12 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import FleetSection from "@/components/FleetSection";
 import OffersSection from "@/components/OffersSection";
+import FleetSection from "@/components/FleetSection";
 import WhyUsSection from "@/components/WhyUsSection";
-import BookingSection from "@/components/BookingSection";
+import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   return (
@@ -15,9 +16,10 @@ const Index = () => {
       <OffersSection />
       <FleetSection />
       <WhyUsSection />
-      <BookingSection />
+      <FAQSection />
       <ContactSection />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 };

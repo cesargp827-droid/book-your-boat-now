@@ -6,52 +6,55 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 210 50% 10%;
+    --background: 51 56% 91%;
+    --foreground: 197 60% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 50% 10%;
+    --card-foreground: 197 60% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 50% 10%;
+    --popover-foreground: 197 60% 12%;
 
-    --primary: 205 65% 20%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 197 100% 23%;
+    --primary-foreground: 51 56% 91%;
 
-    --secondary: 200 30% 94%;
-    --secondary-foreground: 205 65% 20%;
+    --secondary: 51 40% 95%;
+    --secondary-foreground: 197 100% 23%;
 
-    --muted: 210 20% 95%;
-    --muted-foreground: 210 15% 45%;
+    --muted: 51 30% 88%;
+    --muted-foreground: 197 30% 40%;
 
-    --accent: 38 80% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 42 87% 63%;
+    --accent-foreground: 197 100% 12%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
-    --ring: 205 65% 20%;
+    --border: 51 20% 82%;
+    --input: 51 20% 82%;
+    --ring: 197 100% 23%;
 
     --radius: 0.75rem;
 
-    --ocean: 195 70% 45%;
+    --ocean: 197 100% 23%;
     --ocean-foreground: 0 0% 100%;
-    --ocean-light: 195 60% 92%;
-    --navy: 210 60% 12%;
-    --navy-foreground: 0 0% 100%;
-    --gold: 38 80% 55%;
-    --gold-foreground: 210 60% 12%;
-    --sand: 35 30% 95%;
+    --ocean-light: 197 60% 92%;
+    --navy: 197 100% 23%;
+    --navy-foreground: 51 56% 91%;
+    --midnight: 197 100% 15%;
+    --midnight-foreground: 0 0% 100%;
+    --gold: 42 87% 63%;
+    --gold-foreground: 197 100% 12%;
+    --almond: 51 56% 91%;
+    --sand: 51 40% 95%;
 
-    --gradient-hero: linear-gradient(135deg, hsl(210 60% 12%) 0%, hsl(205 65% 20%) 50%, hsl(195 70% 45%) 100%);
-    --gradient-ocean: linear-gradient(180deg, hsl(195 70% 45% / 0.1) 0%, hsl(195 70% 45% / 0) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(38 80% 55%) 0%, hsl(42 90% 65%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(197 100% 15%) 0%, hsl(197 100% 23%) 50%, hsl(197 80% 35%) 100%);
+    --gradient-ocean: linear-gradient(180deg, hsl(197 100% 23% / 0.1) 0%, hsl(197 100% 23% / 0) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(42 87% 63%) 0%, hsl(45 90% 70%) 100%);
 
-    --shadow-card: 0 4px 24px -4px hsl(210 60% 12% / 0.08);
-    --shadow-card-hover: 0 12px 40px -8px hsl(210 60% 12% / 0.15);
-    --shadow-hero: 0 20px 60px -15px hsl(210 60% 12% / 0.3);
+    --shadow-card: 0 4px 24px -4px hsl(197 100% 15% / 0.06);
+    --shadow-card-hover: 0 12px 40px -8px hsl(197 100% 15% / 0.12);
+    --shadow-hero: 0 20px 60px -15px hsl(197 100% 15% / 0.3);
 
     --font-display: 'Playfair Display', serif;
     --font-body: 'Source Sans 3', sans-serif;
@@ -67,25 +70,25 @@
   }
 
   .dark {
-    --background: 210 50% 6%;
-    --foreground: 210 20% 95%;
-    --card: 210 50% 10%;
-    --card-foreground: 210 20% 95%;
-    --popover: 210 50% 10%;
-    --popover-foreground: 210 20% 95%;
-    --primary: 195 70% 45%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 15%;
-    --secondary-foreground: 210 20% 95%;
-    --muted: 210 40% 15%;
-    --muted-foreground: 210 15% 60%;
-    --accent: 38 80% 55%;
-    --accent-foreground: 0 0% 100%;
+    --background: 197 100% 6%;
+    --foreground: 51 56% 91%;
+    --card: 197 80% 10%;
+    --card-foreground: 51 56% 91%;
+    --popover: 197 80% 10%;
+    --popover-foreground: 51 56% 91%;
+    --primary: 42 87% 63%;
+    --primary-foreground: 197 100% 12%;
+    --secondary: 197 60% 15%;
+    --secondary-foreground: 51 56% 91%;
+    --muted: 197 40% 15%;
+    --muted-foreground: 197 15% 60%;
+    --accent: 42 87% 63%;
+    --accent-foreground: 197 100% 12%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 210 40% 18%;
-    --input: 210 40% 18%;
-    --ring: 195 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 197 40% 18%;
+    --input: 197 40% 18%;
+    --ring: 42 87% 63%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
