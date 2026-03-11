@@ -107,7 +107,7 @@ const BookingPage = () => {
             <ArrowLeft className="h-4 w-4" />
             Volver
           </button>
-          <div className="h-5 w-px bg-navy-foreground/20" />
+          <div className="h-5 w-px bg-ocean-foreground/20" />
           <h1 className="font-display text-lg font-bold">Reserva tu Experiencia</h1>
         </div>
       </div>
