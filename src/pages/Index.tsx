@@ -7,20 +7,23 @@ import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { SkipperProvider } from "@/context/SkipperContext";
 
 const Index = () => {
   return (
-    <main className="min-h-screen">
-      <Navbar />
-      <HeroSection />
-      <FleetSection />
-      <OffersSection />
-      <WhyUsSection />
-      <FAQSection />
-      <ContactSection />
-      <Footer />
-      <WhatsAppButton />
-    </main>
+    <SkipperProvider>
+      <main className="min-h-screen">
+        <Navbar />
+        <HeroSection />
+        <FleetSection />
+        <OffersSection />
+        <WhyUsSection />
+        <FAQSection />
+        <ContactSection />
+        <Footer />
+        <WhatsAppButton />
+      </main>
+    </SkipperProvider>
   );
 };
 
