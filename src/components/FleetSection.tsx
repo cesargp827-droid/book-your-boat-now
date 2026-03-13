@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Users, Zap, Anchor, ShowerHead, Speaker, ArrowRight, X, Clock, Gift, Droplets, Volume2, Donut, ShieldCheck } from "lucide-react";
+import { Users, Zap, ShowerHead, Speaker, ArrowRight, X, Gift, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useSkipper } from "@/context/SkipperContext";
 import nireusImg from "@/assets/nireus-620.jpg";
 import barracudaImg from "@/assets/barracuda-545.jpg";
 import astiluxImg from "@/assets/astilux-600.jpg";
@@ -32,7 +33,7 @@ const boats: BoatData[] = [
     capacity: 10,
     power: "200 CV",
     boatValue: "nireus-620",
-    prices: { "4h": 270, "8h": 470 },
+    prices: { "4h": 240, "8h": 420 },
     pack: {
       perPerson: 32,
       totalBase: 320,
@@ -47,7 +48,7 @@ const boats: BoatData[] = [
     capacity: 7,
     power: "100 CV",
     boatValue: "barracuda-595",
-    prices: { "4h": 200, "8h": 310 },
+    prices: { "4h": 190, "8h": 300 },
     pack: {
       perPerson: 35,
       totalBase: 245,
@@ -62,7 +63,7 @@ const boats: BoatData[] = [
     capacity: 7,
     power: "100 CV",
     boatValue: "astilux-600",
-    prices: { "4h": 225, "8h": 340 },
+    prices: { "4h": 210, "8h": 330 },
     pack: {
       perPerson: 40,
       totalBase: 280,
@@ -72,23 +73,30 @@ const boats: BoatData[] = [
   },
 ];
 
-const SKIPPER_COST = 100;
+const SKIPPER_COST = 45;
 
 const FleetSection = () => {
   const navigate = useNavigate();
+  const { withSkipper } = useSkipper();
   const [openModal, setOpenModal] = useState<string | null>(null);
   const [offerType, setOfferType] = useState<"basic" | "pack">("basic");
   const [duration, setDuration] = useState<"4h" | "8h">("4h");
-  const [withSkipper, setWithSkipper] = useState(false);
 
   const activeBoat = boats.find((b) => b.boatValue === openModal);
 
+  const getEffectiveCapacity = (boat: BoatData) =>
+    withSkipper ? boat.capacity - 1 : boat.capacity;
+
+  const getEffectivePrice = (boat: BoatData, dur: "4h" | "8h") =>
+    boat.prices[dur] + (withSkipper ? SKIPPER_COST : 0);
+
   const computedPrice = (() => {
     if (!activeBoat) return 0;
-    const base = offerType === "pack"
-      ? activeBoat.pack.perPerson * activeBoat.capacity
-      : activeBoat.prices[duration];
-    return base + (withSkipper ? SKIPPER_COST : 0);
+    const effectiveCap = getEffectiveCapacity(activeBoat);
+    if (offerType === "pack") {
+      return activeBoat.pack.perPerson * effectiveCap + (withSkipper ? SKIPPER_COST : 0);
+    }
+    return getEffectivePrice(activeBoat, duration);
   })();
 
   const handleReserve = () => {
@@ -105,7 +113,6 @@ const FleetSection = () => {
   const resetAndOpen = (boatValue: string) => {
     setOfferType("basic");
     setDuration("4h");
-    setWithSkipper(false);
     setOpenModal(boatValue);
   };
 
@@ -121,72 +128,103 @@ const FleetSection = () => {
             Elige tu Embarcación
           </h2>
           <p className="font-body text-muted-foreground mt-5 text-lg leading-relaxed">
-            Alquiler con licencia en Port Ginesta y Sitges. Dos opciones: tarifa por barco o pack exclusivo por persona.
+            {withSkipper
+              ? "Alquiler con patrón profesional en Sitges y Port Ginesta. Disfruta sin preocupaciones, nosotros navegamos por ti."
+              : "Alquiler con licencia en Port Ginesta y Sitges. Dos opciones: tarifa por barco o pack exclusivo por persona."}
           </p>
+          {withSkipper && (
+            <div className="inline-flex items-center gap-2 mt-4 bg-gold/10 text-gold font-body text-sm font-semibold px-4 py-2 rounded-full border border-gold/20">
+              <ShieldCheck className="h-4 w-4" />
+              Capitán profesional incluido para tu total seguridad
+            </div>
+          )}
         </div>
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {boats.map((boat) => (
-            <div key={boat.name} className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 flex flex-col">
-              <div className="relative overflow-hidden aspect-[4/3]">
-                <img
-                  src={boat.image}
-                  alt={`Alquiler ${boat.name} en Sitges y Port Ginesta`}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                />
-                <div className="absolute top-4 right-4 bg-gold text-gold-foreground font-body font-bold px-3 py-1.5 rounded-lg text-sm">
-                  Desde {boat.prices["4h"]}€
-                </div>
-                {boat.name === "Nireus 620 CL" && (
-                  <div className="absolute top-4 left-4 bg-primary text-primary-foreground font-body text-[10px] font-bold px-3 py-1.5 rounded-md uppercase tracking-wider">
-                    Más Popular
+          {boats.map((boat) => {
+            const cap = getEffectiveCapacity(boat);
+            const basePrice = getEffectivePrice(boat, "4h");
+
+            return (
+              <div key={boat.name} className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-500 flex flex-col">
+                <div className="relative overflow-hidden aspect-[4/3]">
+                  <img
+                    src={boat.image}
+                    alt={`Alquiler ${boat.name} ${withSkipper ? "con patrón" : "con licencia"} en Sitges y Port Ginesta`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-4 right-4 bg-gold text-gold-foreground font-body font-bold px-3 py-1.5 rounded-lg text-sm">
+                    Desde {basePrice}€
                   </div>
-                )}
+                  {boat.name === "Nireus 620 CL" && (
+                    <div className="absolute top-4 left-4 bg-primary text-primary-foreground font-body text-[10px] font-bold px-3 py-1.5 rounded-md uppercase tracking-wider">
+                      Más Popular
+                    </div>
+                  )}
+                  {withSkipper && (
+                    <div className="absolute bottom-4 left-4 bg-gold/90 text-gold-foreground font-body text-[10px] font-bold px-3 py-1.5 rounded-md uppercase tracking-wider">
+                      Con Patrón +{SKIPPER_COST}€
+                    </div>
+                  )}
+                </div>
+
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="font-display text-xl font-bold text-foreground mb-2">{boat.name}</h3>
+                  <p className="font-body text-muted-foreground text-sm leading-relaxed mb-3 flex-1">
+                    {boat.description}
+                  </p>
+
+                  {withSkipper && (
+                    <p className="font-body text-xs text-gold italic mb-3">
+                      Disfruta sin preocupaciones, nosotros navegamos por ti
+                    </p>
+                  )}
+
+                  <div className="flex flex-wrap items-center gap-3 mb-3 text-sm text-muted-foreground font-body">
+                    <span className="flex items-center gap-1.5">
+                      <Users className="h-4 w-4 text-primary" /> {cap} pers.
+                      {withSkipper && <span className="text-[10px] text-gold">(+patrón)</span>}
+                    </span>
+                    <span className="flex items-center gap-1.5"><Zap className="h-4 w-4 text-primary" /> {boat.power}</span>
+                  </div>
+
+                  <div className="flex items-center gap-3 mb-4 text-xs text-muted-foreground font-body">
+                    <span className="flex items-center gap-1.5 bg-muted px-2.5 py-1.5 rounded-lg">
+                      <ShowerHead className="h-3.5 w-3.5 text-primary" /> Ducha
+                    </span>
+                    <span className="flex items-center gap-1.5 bg-muted px-2.5 py-1.5 rounded-lg">
+                      <Speaker className="h-3.5 w-3.5 text-primary" /> Altavoces HQ
+                    </span>
+                  </div>
+
+                  {/* Two price previews */}
+                  <div className="grid grid-cols-2 gap-2 mb-4 text-xs font-body">
+                    <div className="bg-secondary rounded-lg p-2.5 text-center">
+                      <p className="text-muted-foreground mb-0.5">Básica</p>
+                      <p className="font-bold text-foreground">
+                        {basePrice}€ <span className="font-normal text-muted-foreground">/ 4h</span>
+                      </p>
+                    </div>
+                    <div className="bg-gold/10 rounded-lg p-2.5 text-center border border-gold/20">
+                      <p className="text-gold font-semibold mb-0.5">Pack VIP</p>
+                      <p className="font-bold text-foreground">
+                        {boat.pack.perPerson}€ <span className="font-normal text-muted-foreground">/ pers.</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <Button
+                    onClick={() => resetAndOpen(boat.boatValue)}
+                    className="w-full bg-gold hover:bg-gold/90 text-gold-foreground font-body font-bold"
+                  >
+                    Reservar <ArrowRight className="h-4 w-4 ml-2" />
+                  </Button>
+                </div>
               </div>
-
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-display text-xl font-bold text-foreground mb-2">{boat.name}</h3>
-                <p className="font-body text-muted-foreground text-sm leading-relaxed mb-4 flex-1">
-                  {boat.description}
-                </p>
-
-                <div className="flex flex-wrap items-center gap-3 mb-3 text-sm text-muted-foreground font-body">
-                  <span className="flex items-center gap-1.5"><Users className="h-4 w-4 text-primary" /> {boat.capacity} pers.</span>
-                  <span className="flex items-center gap-1.5"><Zap className="h-4 w-4 text-primary" /> {boat.power}</span>
-                </div>
-
-                <div className="flex items-center gap-3 mb-4 text-xs text-muted-foreground font-body">
-                  <span className="flex items-center gap-1.5 bg-muted px-2.5 py-1.5 rounded-lg">
-                    <ShowerHead className="h-3.5 w-3.5 text-primary" /> Ducha
-                  </span>
-                  <span className="flex items-center gap-1.5 bg-muted px-2.5 py-1.5 rounded-lg">
-                    <Speaker className="h-3.5 w-3.5 text-primary" /> Altavoces HQ
-                  </span>
-                </div>
-
-                {/* Two price previews */}
-                <div className="grid grid-cols-2 gap-2 mb-4 text-xs font-body">
-                  <div className="bg-secondary rounded-lg p-2.5 text-center">
-                    <p className="text-muted-foreground mb-0.5">Básica</p>
-                    <p className="font-bold text-foreground">{boat.prices["4h"]}€ <span className="font-normal text-muted-foreground">/ 4h</span></p>
-                  </div>
-                  <div className="bg-gold/10 rounded-lg p-2.5 text-center border border-gold/20">
-                    <p className="text-gold font-semibold mb-0.5">Pack VIP</p>
-                    <p className="font-bold text-foreground">{boat.pack.perPerson}€ <span className="font-normal text-muted-foreground">/ pers.</span></p>
-                  </div>
-                </div>
-
-                <Button
-                  onClick={() => resetAndOpen(boat.boatValue)}
-                  className="w-full bg-gold hover:bg-gold/90 text-gold-foreground font-body font-bold"
-                >
-                  Reservar <ArrowRight className="h-4 w-4 ml-2" />
-                </Button>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -211,9 +249,19 @@ const FleetSection = () => {
                 <h3 className="font-display text-2xl font-bold text-foreground">{activeBoat.name}</h3>
                 <p className="font-body text-sm text-muted-foreground mt-1">
                   <Users className="h-3.5 w-3.5 inline mr-1" />
-                  Hasta {activeBoat.capacity} personas · {activeBoat.power}
+                  Hasta {getEffectiveCapacity(activeBoat)} personas · {activeBoat.power}
+                  {withSkipper && <span className="text-gold ml-1">(+patrón a bordo)</span>}
                 </p>
               </div>
+
+              {withSkipper && (
+                <div className="flex items-center gap-2 bg-gold/10 rounded-xl px-4 py-3 border border-gold/20">
+                  <ShieldCheck className="h-4 w-4 text-gold flex-shrink-0" />
+                  <p className="font-body text-xs text-gold font-semibold">
+                    Capitán profesional incluido · No necesitas licencia
+                  </p>
+                </div>
+              )}
 
               {/* Offer type selector */}
               <div>
@@ -231,7 +279,7 @@ const FleetSection = () => {
                     <p className="font-body text-xs uppercase tracking-wider font-bold text-primary mb-1">Básica</p>
                     <p className="font-body text-[11px] text-muted-foreground">Alquiler embarcación completa</p>
                     <p className="font-display text-xl font-bold text-foreground mt-2">
-                      {activeBoat.prices["4h"]}€ <span className="font-body text-xs text-muted-foreground">/ 4h</span>
+                      {getEffectivePrice(activeBoat, "4h")}€ <span className="font-body text-xs text-muted-foreground">/ 4h</span>
                     </p>
                   </button>
                   <button
@@ -247,7 +295,7 @@ const FleetSection = () => {
                       <p className="font-body text-xs uppercase tracking-wider font-bold text-gold mb-1">Pack VIP</p>
                       <span className="bg-gold/10 text-gold font-body text-[9px] font-bold px-2 py-0.5 rounded">MAYO</span>
                     </div>
-                    <p className="font-body text-[11px] text-muted-foreground">Precio por persona × {activeBoat.capacity}</p>
+                    <p className="font-body text-[11px] text-muted-foreground">Precio por persona × {getEffectiveCapacity(activeBoat)}</p>
                     <p className="font-display text-xl font-bold text-gold mt-2">
                       {activeBoat.pack.perPerson}€ <span className="font-body text-xs text-muted-foreground">/ pers.</span>
                     </p>
@@ -290,26 +338,10 @@ const FleetSection = () => {
                     ))}
                   </ul>
                   <p className="font-body text-[11px] text-muted-foreground mt-3 pt-2 border-t border-gold/10">
-                    Duración total: <strong className="text-foreground">{activeBoat.pack.duration}</strong> · Mín. {activeBoat.capacity} personas (barco completo)
+                    Duración total: <strong className="text-foreground">{activeBoat.pack.duration}</strong> · Mín. {getEffectiveCapacity(activeBoat)} personas (barco completo)
                   </p>
                 </div>
               )}
-
-              {/* Skipper toggle */}
-              <div className="flex items-center justify-between bg-secondary rounded-xl p-4">
-                <div>
-                  <p className="font-body text-sm font-semibold text-foreground">¿Necesitas Patrón?</p>
-                  <p className="font-body text-xs text-muted-foreground">
-                    {withSkipper
-                      ? "Un profesional conduce — no necesitas licencia"
-                      : "Requiere licencia de navegación válida"}
-                  </p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="font-body text-xs font-semibold text-muted-foreground">+{SKIPPER_COST}€</span>
-                  <Switch checked={withSkipper} onCheckedChange={setWithSkipper} />
-                </div>
-              </div>
 
               {/* Price summary */}
               <div className="bg-gold/8 rounded-xl p-5 border border-gold/15">
@@ -317,12 +349,12 @@ const FleetSection = () => {
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">
                       {offerType === "pack"
-                        ? `Precio por persona × ${activeBoat.capacity}`
+                        ? `Precio por persona × ${getEffectiveCapacity(activeBoat)}`
                         : `Alquiler embarcación completa (${duration})`}
                     </span>
                     <span className="font-semibold text-foreground">
                       {offerType === "pack"
-                        ? `${activeBoat.pack.perPerson} × ${activeBoat.capacity} = ${activeBoat.pack.totalBase}€`
+                        ? `${activeBoat.pack.perPerson} × ${getEffectiveCapacity(activeBoat)} = ${activeBoat.pack.perPerson * getEffectiveCapacity(activeBoat)}€`
                         : `${activeBoat.prices[duration]}€`}
                     </span>
                   </div>
