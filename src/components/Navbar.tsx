@@ -44,11 +44,9 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-primary/98 backdrop-blur-md shadow-lg"
-          : "bg-primary/95 backdrop-blur-md"
-      } border-b border-primary-foreground/10`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary backdrop-blur-md border-b border-primary-foreground/10 ${
+        scrolled ? "shadow-lg" : ""
+      }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
