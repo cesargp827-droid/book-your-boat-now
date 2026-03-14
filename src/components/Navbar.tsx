@@ -44,7 +44,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary backdrop-blur-md border-b border-primary-foreground/10 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary border-b border-primary-foreground/10 ${
         scrolled ? "shadow-lg" : ""
       }`}
     >
@@ -61,22 +61,20 @@ const Navbar = () => {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {/* Ofertas */}
             <button
-              onClick={() => scrollTo("offers")}
+              onClick={() => scrollTo("hero")}
               className="text-primary-foreground/80 hover:text-gold font-body font-medium text-sm tracking-wide transition-colors"
             >
-              Ofertas{" "}
-              <span className="text-gold text-[10px] font-bold ml-1">(Tiempo Limitado)</span>
+              Inicio
             </button>
 
-            {/* Alquileres dropdown */}
+            {/* Alquiler de Barcos dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="flex items-center gap-1 text-primary-foreground/80 hover:text-gold font-body font-medium text-sm tracking-wide transition-colors"
               >
-                Alquileres
+                Alquiler de Barcos
                 <ChevronDown className={`h-3.5 w-3.5 transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
               </button>
 
@@ -90,9 +88,9 @@ const Navbar = () => {
                         : "text-foreground hover:bg-muted"
                     }`}
                   >
-                    <span>Sin Patrón</span>
+                    <span>Con Licencia</span>
                     <span className="text-[11px] text-muted-foreground font-normal">
-                      Requiere licencia de navegación
+                      Navega por tu cuenta con tu licencia
                     </span>
                   </button>
                   <div className="border-t border-border" />
@@ -106,14 +104,21 @@ const Navbar = () => {
                   >
                     <span>Con Patrón</span>
                     <span className="text-[11px] text-muted-foreground font-normal">
-                      Capitán profesional incluido
+                      Capitán profesional incluido (+45€)
                     </span>
                   </button>
                 </div>
               )}
             </div>
 
-            {/* FAQ */}
+            <button
+              onClick={() => scrollTo("offers")}
+              className="text-primary-foreground/80 hover:text-gold font-body font-medium text-sm tracking-wide transition-colors"
+            >
+              Oferta Especial{" "}
+              <span className="text-gold text-[10px] font-bold ml-1">(Marzo)</span>
+            </button>
+
             <button
               onClick={() => scrollTo("faq")}
               className="text-primary-foreground/80 hover:text-gold font-body font-medium text-sm tracking-wide transition-colors"
@@ -150,14 +155,14 @@ const Navbar = () => {
         {isOpen && (
           <div className="md:hidden pb-4 border-t border-primary-foreground/10 mt-2 pt-4 space-y-1">
             <button
-              onClick={() => scrollTo("offers")}
+              onClick={() => scrollTo("hero")}
               className="block w-full text-left text-primary-foreground/80 hover:text-gold font-body py-2.5 transition-colors"
             >
-              Ofertas <span className="text-gold text-[10px] font-bold">(Tiempo Limitado)</span>
+              Inicio
             </button>
 
             <p className="text-primary-foreground/50 text-[10px] font-body uppercase tracking-wider pt-2 pb-1 px-1">
-              Alquileres
+              Alquiler de Barcos
             </p>
             <button
               onClick={() => handleSkipperChoice(false)}
@@ -165,7 +170,7 @@ const Navbar = () => {
                 !withSkipper ? "text-gold font-semibold" : "text-primary-foreground/70"
               }`}
             >
-              Sin Patrón
+              Con Licencia
             </button>
             <button
               onClick={() => handleSkipperChoice(true)}
@@ -174,6 +179,13 @@ const Navbar = () => {
               }`}
             >
               Con Patrón
+            </button>
+
+            <button
+              onClick={() => scrollTo("offers")}
+              className="block w-full text-left text-primary-foreground/80 hover:text-gold font-body py-2.5 transition-colors"
+            >
+              Oferta Especial <span className="text-gold text-[10px] font-bold">(Marzo)</span>
             </button>
 
             <button
