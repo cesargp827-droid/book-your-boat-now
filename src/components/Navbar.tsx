@@ -42,39 +42,39 @@ const Navbar = () => {
     scrollTo("fleet");
   };
 
+  const navLinkClass =
+    "text-sand/80 hover:text-gold font-body font-medium text-sm tracking-wide transition-colors";
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary border-b border-primary-foreground/10 ${
-        scrolled ? "shadow-lg" : ""
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary ${
+        scrolled ? "shadow-lg border-b border-sand/5" : ""
       }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <button onClick={() => scrollTo("hero")} className="flex items-center gap-2.5">
+        <div className="flex items-center h-16 lg:h-20 gap-10">
+          {/* Logo integrated with nav */}
+          <button onClick={() => scrollTo("hero")} className="flex items-center gap-2.5 flex-shrink-0">
             <img
               src={logoImg}
-              alt="Nàutica Negobà - Alquiler de barcos en Sitges"
-              className="h-10 lg:h-12 w-auto"
+              alt="Nàutica Negobà - Alquiler de barcos en Castelldefels"
+              className="h-9 lg:h-11 w-auto opacity-90 brightness-110"
             />
           </button>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
-            <button
-              onClick={() => scrollTo("hero")}
-              className="text-primary-foreground/80 hover:text-gold font-body font-medium text-sm tracking-wide transition-colors"
-            >
+          {/* Desktop Nav — inline with logo */}
+          <div className="hidden md:flex items-center gap-8 flex-1">
+            <button onClick={() => scrollTo("hero")} className={navLinkClass}>
               Inicio
             </button>
 
-            {/* Alquiler de Barcos dropdown */}
+            {/* Alquileres dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="flex items-center gap-1 text-primary-foreground/80 hover:text-gold font-body font-medium text-sm tracking-wide transition-colors"
+                className={`flex items-center gap-1 ${navLinkClass}`}
               >
-                Alquiler de Barcos
+                Alquileres
                 <ChevronDown className={`h-3.5 w-3.5 transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
               </button>
 
@@ -111,24 +111,18 @@ const Navbar = () => {
               )}
             </div>
 
-            <button
-              onClick={() => scrollTo("offers")}
-              className="text-primary-foreground/80 hover:text-gold font-body font-medium text-sm tracking-wide transition-colors"
-            >
-              Oferta Especial{" "}
+            <button onClick={() => scrollTo("offers")} className={navLinkClass}>
+              Ofertas{" "}
               <span className="text-gold text-[10px] font-bold ml-1">(Marzo)</span>
             </button>
 
-            <button
-              onClick={() => scrollTo("faq")}
-              className="text-primary-foreground/80 hover:text-gold font-body font-medium text-sm tracking-wide transition-colors"
-            >
+            <button onClick={() => scrollTo("faq")} className={navLinkClass}>
               FAQ
             </button>
           </div>
 
-          {/* CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* CTA — pushed right */}
+          <div className="hidden md:flex items-center gap-3 ml-auto">
             {withSkipper && (
               <span className="text-[11px] font-body font-semibold text-gold bg-gold/10 px-3 py-1.5 rounded-full">
                 Con Patrón
@@ -145,7 +139,7 @@ const Navbar = () => {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-primary-foreground"
+            className="md:hidden text-sand ml-auto"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -153,21 +147,21 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden pb-4 border-t border-primary-foreground/10 mt-2 pt-4 space-y-1">
+          <div className="md:hidden pb-4 border-t border-sand/10 mt-2 pt-4 space-y-1">
             <button
               onClick={() => scrollTo("hero")}
-              className="block w-full text-left text-primary-foreground/80 hover:text-gold font-body py-2.5 transition-colors"
+              className="block w-full text-left text-sand/80 hover:text-gold font-body py-2.5 transition-colors"
             >
               Inicio
             </button>
 
-            <p className="text-primary-foreground/50 text-[10px] font-body uppercase tracking-wider pt-2 pb-1 px-1">
-              Alquiler de Barcos
+            <p className="text-sand/40 text-[10px] font-body uppercase tracking-wider pt-2 pb-1 px-1">
+              Alquileres
             </p>
             <button
               onClick={() => handleSkipperChoice(false)}
               className={`block w-full text-left font-body py-2.5 pl-3 transition-colors ${
-                !withSkipper ? "text-gold font-semibold" : "text-primary-foreground/70"
+                !withSkipper ? "text-gold font-semibold" : "text-sand/60"
               }`}
             >
               Con Licencia
@@ -175,7 +169,7 @@ const Navbar = () => {
             <button
               onClick={() => handleSkipperChoice(true)}
               className={`block w-full text-left font-body py-2.5 pl-3 transition-colors ${
-                withSkipper ? "text-gold font-semibold" : "text-primary-foreground/70"
+                withSkipper ? "text-gold font-semibold" : "text-sand/60"
               }`}
             >
               Con Patrón
@@ -183,14 +177,14 @@ const Navbar = () => {
 
             <button
               onClick={() => scrollTo("offers")}
-              className="block w-full text-left text-primary-foreground/80 hover:text-gold font-body py-2.5 transition-colors"
+              className="block w-full text-left text-sand/80 hover:text-gold font-body py-2.5 transition-colors"
             >
-              Oferta Especial <span className="text-gold text-[10px] font-bold">(Marzo)</span>
+              Ofertas <span className="text-gold text-[10px] font-bold">(Marzo)</span>
             </button>
 
             <button
               onClick={() => scrollTo("faq")}
-              className="block w-full text-left text-primary-foreground/80 hover:text-gold font-body py-2.5 transition-colors"
+              className="block w-full text-left text-sand/80 hover:text-gold font-body py-2.5 transition-colors"
             >
               FAQ
             </button>

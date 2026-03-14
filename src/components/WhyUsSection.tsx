@@ -5,7 +5,7 @@ const reasons = [
     icon: MapPin,
     title: "Ubicación Privilegiada",
     description:
-      "Operamos desde Port Ginesta y Sitges, en la exclusiva Costa del Garraf. Aguas cristalinas y calas escondidas a minutos de Barcelona.",
+      "Operamos desde Port Ginesta, en Castelldefels, en la exclusiva Costa del Garraf. Aguas cristalinas y calas escondidas a minutos de Barcelona.",
   },
   {
     icon: Star,
@@ -43,23 +43,23 @@ const WhyUsSection = () => {
   return (
     <section className="py-28 lg:py-36 bg-sand">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 max-w-2xl mx-auto">
+        <div className="text-center mb-20 max-w-2xl mx-auto">
           <p className="font-body font-semibold text-primary tracking-[0.3em] uppercase text-xs mb-5">
             La Diferencia
           </p>
           <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground">
             ¿Por qué Nàutica Negobà?
           </h2>
-          <p className="font-body text-muted-foreground mt-5 text-lg leading-relaxed">
+          <p className="font-body text-muted-foreground mt-6 text-lg leading-relaxed">
             Más de una década ofreciendo experiencias náuticas inolvidables en la costa catalana.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {reasons.map(({ icon: Icon, title, description }) => (
             <div
               key={title}
-              className="bg-card rounded-xl p-7 shadow-card hover:shadow-card-hover transition-all duration-300 group"
+              className="bg-card rounded-xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 group"
             >
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 mb-5 group-hover:bg-primary/15 transition-colors">
                 <Icon className="h-5 w-5 text-primary" />

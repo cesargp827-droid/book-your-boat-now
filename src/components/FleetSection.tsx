@@ -80,22 +80,22 @@ const FleetSection = () => {
     <section id="fleet" className="py-28 lg:py-36 bg-background">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16 max-w-2xl mx-auto">
+        <div className="text-center mb-20 max-w-2xl mx-auto">
           <p className="font-body font-semibold text-primary tracking-[0.3em] uppercase text-xs mb-5">
             Nuestra Flota
           </p>
           <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground">
-            {selectedBoat ? "Configura tu Alquiler" : "Alquiler de Barcos en Sitges y Port Ginesta"}
+            {selectedBoat ? "Configura tu Alquiler" : "Alquiler de Barcos en Castelldefels y Port Ginesta"}
           </h2>
-          <p className="font-body text-muted-foreground mt-5 text-lg leading-relaxed">
+          <p className="font-body text-muted-foreground mt-6 text-lg leading-relaxed">
             {selectedBoat
               ? `Has elegido la ${selectedBoat.name}. Selecciona la duración de tu experiencia.`
               : withSkipper
                 ? "Alquiler con patrón profesional incluido. Selecciona tu embarcación."
-                : "Alquiler de barcos con licencia en Sitges. Equipamiento premium de serie."}
+                : "Alquiler de barcos con licencia en Castelldefels. Equipamiento premium de serie."}
           </p>
           {withSkipper && !selectedBoat && (
-            <div className="inline-flex items-center gap-2 mt-4 bg-gold/10 text-gold font-body text-sm font-semibold px-4 py-2 rounded-full border border-gold/20">
+            <div className="inline-flex items-center gap-2 mt-5 bg-gold/10 text-gold font-body text-sm font-semibold px-4 py-2 rounded-full border border-gold/20">
               <ShieldCheck className="h-4 w-4" />
               Capitán profesional incluido en todas las embarcaciones
             </div>
@@ -104,7 +104,7 @@ const FleetSection = () => {
 
         {/* STEP 1: Boat Selection */}
         {!selectedBoat && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
             {boats.map((boat) => {
               const cap = getCapacity(boat);
               return (
@@ -115,7 +115,7 @@ const FleetSection = () => {
                   <div className="relative overflow-hidden aspect-[4/3]">
                     <img
                       src={boat.image}
-                      alt={`Alquiler ${boat.name} ${withSkipper ? "con patrón" : "con licencia"} en Sitges y Port Ginesta`}
+                      alt={`Alquiler ${boat.name} ${withSkipper ? "con patrón" : "con licencia"} en Castelldefels y Port Ginesta`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
                     />
@@ -131,16 +131,16 @@ const FleetSection = () => {
                     )}
                   </div>
 
-                  <div className="p-6 flex flex-col flex-1">
+                  <div className="p-7 flex flex-col flex-1">
                     <h3 className="font-display text-xl font-bold text-foreground mb-2">
                       {boat.name}
                     </h3>
-                    <p className="font-body text-muted-foreground text-sm leading-relaxed mb-4 flex-1">
+                    <p className="font-body text-muted-foreground text-sm leading-relaxed mb-5 flex-1">
                       {boat.description}
                     </p>
 
                     {/* Specs */}
-                    <div className="flex flex-wrap items-center gap-3 mb-3 text-sm text-muted-foreground font-body">
+                    <div className="flex flex-wrap items-center gap-3 mb-4 text-sm text-muted-foreground font-body">
                       <span className="flex items-center gap-1.5">
                         <Users className="h-4 w-4 text-primary" /> {cap} pers.
                         {withSkipper && <span className="text-[10px] text-gold">(+patrón)</span>}
@@ -154,7 +154,7 @@ const FleetSection = () => {
                     </div>
 
                     {/* Equipment */}
-                    <div className="flex items-center gap-3 mb-5 text-xs text-muted-foreground font-body">
+                    <div className="flex items-center gap-3 mb-6 text-xs text-muted-foreground font-body">
                       <span className="flex items-center gap-1.5 bg-muted px-2.5 py-1.5 rounded-lg">
                         <ShowerHead className="h-3.5 w-3.5 text-primary" /> Ducha agua dulce
                       </span>
@@ -260,7 +260,7 @@ const FleetSection = () => {
                   </p>
                   <div className="flex items-center justify-center gap-2 text-xs font-body text-primary">
                     <Shield className="h-3.5 w-3.5" />
-                    <span><strong>Garantía de Riesgo Cero:</strong> devolución íntegra si el clima no acompaña</span>
+                    <span><strong>Garantía de Riesgo Cero:</strong> devolución íntegra si el clima no acompaña en Castelldefels</span>
                   </div>
                 </div>
 
@@ -275,7 +275,7 @@ const FleetSection = () => {
             </div>
 
             {/* Nudge to special offer */}
-            <div className="mt-6 text-center">
+            <div className="mt-8 text-center">
               <button
                 onClick={() => {
                   setSelectedBoat(null);

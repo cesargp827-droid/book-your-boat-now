@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "¿Desde dónde salen las embarcaciones?",
-    a: "Todas nuestras embarcaciones salen desde Port Ginesta, en Sitges, en la exclusiva Costa del Garraf. A solo 30 minutos de Barcelona.",
+    a: "Todas nuestras embarcaciones salen desde Port Ginesta, en Castelldefels, en la exclusiva Costa del Garraf. A solo 30 minutos de Barcelona.",
   },
   {
     q: "¿Cómo funciona el proceso de reserva y pago?",
@@ -32,7 +32,7 @@ const FAQSection = () => {
     <section id="faq" className="py-28 lg:py-36 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-14">
+          <div className="text-center mb-16">
             <p className="font-body font-semibold text-primary tracking-[0.3em] uppercase text-xs mb-5">
               Preguntas Frecuentes
             </p>
@@ -41,7 +41,7 @@ const FAQSection = () => {
             </h2>
           </div>
 
-          <Accordion type="single" collapsible className="space-y-3">
+          <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, i) => (
               <AccordionItem
                 key={i}
