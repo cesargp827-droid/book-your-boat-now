@@ -62,7 +62,7 @@ const OffersSection = () => {
     <section id="offers" className="py-28 lg:py-36 bg-primary text-ocean-foreground">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16 max-w-2xl mx-auto">
+        <div className="text-center mb-20 max-w-2xl mx-auto">
           <p className="font-body font-semibold text-gold tracking-[0.3em] uppercase text-xs mb-5">
             Oferta Especial Marzo
           </p>
@@ -75,15 +75,15 @@ const OffersSection = () => {
         </div>
 
         {/* Value Stack */}
-        <div className="max-w-4xl mx-auto mb-20">
-          <h3 className="font-display text-2xl lg:text-3xl font-bold text-center mb-10">
+        <div className="max-w-4xl mx-auto mb-24">
+          <h3 className="font-display text-2xl lg:text-3xl font-bold text-center mb-12">
             Todo lo que incluye tu <span className="text-gold">Pack VIP</span>
           </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {valueStack.map((extra) => (
               <div
                 key={extra.title}
-                className="bg-midnight rounded-xl p-6 text-center border border-ocean-foreground/5 hover:border-gold/20 transition-all duration-300"
+                className="bg-midnight rounded-xl p-7 text-center border border-ocean-foreground/5 hover:border-gold/20 transition-all duration-300"
               >
                 <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gold/10 flex items-center justify-center">
                   <extra.icon className="h-5 w-5 text-gold" />
@@ -98,7 +98,7 @@ const OffersSection = () => {
           </div>
 
           {/* Savings callout */}
-          <div className="mt-10 border border-gold/10 rounded-2xl p-8 lg:p-10 text-center bg-gold/[0.03]">
+          <div className="mt-12 border border-gold/10 rounded-2xl p-10 lg:p-12 text-center bg-gold/[0.03]">
             <p className="font-body text-ocean-foreground/50 text-sm mb-3">
               Si contratases todo por separado, pagarías más de{" "}
               <strong className="text-ocean-foreground line-through">400 €</strong>
@@ -116,7 +116,7 @@ const OffersSection = () => {
         </div>
 
         {/* Offer Cards */}
-        <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
+        <div className="grid lg:grid-cols-3 gap-10 max-w-6xl mx-auto mb-24">
           {offers.map((o) => {
             const cap = getCapacity(o.capacity);
             const total = getTotal(o.perPerson, o.capacity);
@@ -132,7 +132,7 @@ const OffersSection = () => {
                 <div className="relative aspect-[16/10] overflow-hidden">
                   <img
                     src={o.image}
-                    alt={`Pack VIP ${o.boat} — alquiler barcos Sitges`}
+                    alt={`Pack VIP ${o.boat} — alquiler barcos Castelldefels`}
                     className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                     loading="lazy"
                   />
@@ -151,12 +151,12 @@ const OffersSection = () => {
                   </div>
                 </div>
 
-                <div className="p-6 flex flex-col flex-1">
-                  <p className="font-body text-[11px] text-ocean-foreground/40 mb-4 uppercase tracking-wider">
+                <div className="p-7 flex flex-col flex-1">
+                  <p className="font-body text-[11px] text-ocean-foreground/40 mb-5 uppercase tracking-wider">
                     6h navegación · Donut · Mini-bar · Clase
                   </p>
 
-                  <div className="flex items-end justify-between mb-4">
+                  <div className="flex items-end justify-between mb-5">
                     <div>
                       <div className="flex items-baseline gap-1">
                         <span className="font-display text-3xl font-bold text-gold">{o.perPerson}</span>
@@ -188,7 +188,7 @@ const OffersSection = () => {
 
         {/* Guarantee */}
         <div className="max-w-3xl mx-auto">
-          <div className="bg-midnight border border-ocean-foreground/5 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-start gap-6">
+          <div className="bg-midnight border border-ocean-foreground/5 rounded-2xl p-10 md:p-12 flex flex-col md:flex-row items-start gap-6">
             <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0">
               <ShieldCheck className="h-7 w-7 text-gold" />
             </div>
@@ -197,7 +197,7 @@ const OffersSection = () => {
                 Garantía Riesgo Cero
               </h4>
               <p className="font-body text-ocean-foreground/50 leading-relaxed">
-                Si el día de tu reserva el tiempo no acompaña,{" "}
+                Si el día de tu reserva el tiempo no acompaña en Castelldefels,{" "}
                 <strong className="text-ocean-foreground">
                   reprogramamos tu salida o te devolvemos el dinero íntegramente.
                 </strong>{" "}

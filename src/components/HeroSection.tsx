@@ -17,7 +17,7 @@ const HeroSection = () => {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt="Alquiler de barcos en Sitges y Port Ginesta — embarcación navegando por la costa del Garraf"
+            alt="Alquiler de barcos en Castelldefels y Port Ginesta — embarcación navegando por la costa del Garraf"
             className="w-full h-full object-cover"
             loading="eager"
           />
@@ -30,13 +30,13 @@ const HeroSection = () => {
 
         <div className="relative z-10 container mx-auto px-4 text-center pt-20">
           <p className="animate-fade-up text-gold font-body font-semibold tracking-[0.3em] uppercase text-sm mb-8">
-            Port Ginesta · Sitges · Costa del Garraf
+            Port Ginesta · Castelldefels · Costa del Garraf
           </p>
           <h1 className="animate-fade-up-delay-1 font-display text-4xl sm:text-5xl lg:text-7xl font-bold text-ocean-foreground leading-tight max-w-5xl mx-auto">
             Explora el Mediterráneo con la Confianza de los Expertos
           </h1>
           <p className="animate-fade-up-delay-2 font-body text-lg sm:text-xl text-ocean-foreground/80 mt-8 max-w-2xl mx-auto leading-relaxed">
-            Alquiler de barcos en Sitges y Port Ginesta. Experiencias náuticas premium en la costa del Garraf con más de una década de experiencia.
+            Alquiler de barcos en Castelldefels y Port Ginesta. Experiencias náuticas premium en la costa del Garraf con más de una década de experiencia.
           </p>
           <div className="animate-fade-up-delay-3 flex flex-col sm:flex-row gap-4 justify-center mt-12">
             <Button
@@ -66,7 +66,7 @@ const HeroSection = () => {
       </section>
 
       {/* About / Story */}
-      <section id="about" className="py-24 lg:py-32 bg-sand">
+      <section id="about" className="py-28 lg:py-36 bg-sand">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <p className="font-body font-semibold text-primary tracking-[0.3em] uppercase text-xs mb-5">
@@ -75,26 +75,26 @@ const HeroSection = () => {
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-8">
               Más de una Década de Experiencia en el Mar
             </h2>
-            <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto mb-12">
-              Nàutica Negobà nace de la unión de <strong className="text-foreground">tres socios con más de una década de experiencia técnica</strong> en el sector náutico. Dos de ellos ya operaban en esta misma náutica de Port Ginesta, lo que garantiza un conocimiento profundo de la flota, las rutas y las condiciones del Garraf. <strong className="text-foreground">Seguridad, profesionalidad y pasión</strong> por el mar definen cada una de nuestras salidas.
+            <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto mb-16">
+              Nàutica Negobà nace de la unión de <strong className="text-foreground">tres socios con más de una década de experiencia técnica</strong> en el sector náutico. Dos de ellos ya operaban en esta misma náutica de Port Ginesta, lo que garantiza un conocimiento profundo de la flota, las rutas y las condiciones del Garraf. Operamos desde Port Ginesta brindando la mejor experiencia náutica para los residentes y turistas de <strong className="text-foreground">Castelldefels</strong>. <strong className="text-foreground">Seguridad, profesionalidad y pasión</strong> por el mar definen cada una de nuestras salidas.
             </p>
 
-            <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              <div className="bg-card rounded-xl p-6 shadow-card">
+            <div className="grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
+              <div className="bg-card rounded-xl p-8 shadow-card">
                 <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
                   <Award className="h-5 w-5 text-primary" />
                 </div>
                 <p className="font-display text-2xl font-bold text-foreground mb-1">+10 años</p>
                 <p className="font-body text-muted-foreground text-sm">de experiencia técnica</p>
               </div>
-              <div className="bg-card rounded-xl p-6 shadow-card">
+              <div className="bg-card rounded-xl p-8 shadow-card">
                 <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
                   <Anchor className="h-5 w-5 text-primary" />
                 </div>
                 <p className="font-display text-2xl font-bold text-foreground mb-1">3 barcos</p>
                 <p className="font-body text-muted-foreground text-sm">revisados antes de cada salida</p>
               </div>
-              <div className="bg-card rounded-xl p-6 shadow-card">
+              <div className="bg-card rounded-xl p-8 shadow-card">
                 <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
                   <Shield className="h-5 w-5 text-primary" />
                 </div>
