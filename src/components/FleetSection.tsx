@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useSkipper } from "@/context/SkipperContext";
+import { useReveal } from "@/hooks/useReveal";
 import nireusImg from "@/assets/nireus-620.jpg";
 import barracudaImg from "@/assets/barracuda-545.jpg";
 import astiluxImg from "@/assets/astilux-600.jpg";
