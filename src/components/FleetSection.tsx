@@ -58,6 +58,7 @@ const SKIPPER_COST = 45;
 const FleetSection = () => {
   const navigate = useNavigate();
   const { withSkipper } = useSkipper();
+  const headerRef = useReveal();
   const [selectedBoat, setSelectedBoat] = useState<BoatData | null>(null);
   const [selectedDuration, setSelectedDuration] = useState<"2h" | "4h" | "8h">("4h");
 
