@@ -76,7 +76,7 @@ const HeroSection = () => {
               3 Años de Experiencia Técnica Especializada
             </h2>
             <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto mb-16">
-              Nàutica Negobà nace de la unión de <strong className="text-foreground">tres socios con más de una década de experiencia técnica</strong> en el sector náutico. Dos de ellos ya operaban en esta misma náutica de Port Ginesta, lo que garantiza un conocimiento profundo de la flota, las rutas y las condiciones del Garraf. Operamos desde Port Ginesta brindando la mejor experiencia náutica para los residentes y turistas de <strong className="text-foreground">Castelldefels</strong>. <strong className="text-foreground">Seguridad, profesionalidad y pasión</strong> por el mar definen cada una de nuestras salidas.
+              Nàutica Negobà nace de la unión de <strong className="text-foreground">tres socios con 3 años de sólida experiencia técnica especializada</strong> en el sector náutico. Dos de ellos ya operaban en esta misma náutica de Port Ginesta, lo que garantiza un <strong className="text-foreground">conocimiento profundo de las rutas y condiciones del Garraf</strong> pese a la juventud de la marca. Operamos desde Port Ginesta brindando la mejor experiencia náutica para los residentes y turistas de <strong className="text-foreground">Castelldefels</strong>. <strong className="text-foreground">Seguridad, profesionalidad y pasión</strong> por el mar definen cada una de nuestras salidas.
             </p>
 
             <div className="grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
