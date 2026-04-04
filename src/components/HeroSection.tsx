@@ -67,7 +67,7 @@ const HeroSection = () => {
               onClick={() => scrollTo("fleet")}
               size="lg"
               variant="outline"
-              className="border-ocean-foreground/20 text-ocean-foreground hover:bg-ocean-foreground/10 font-body text-lg px-10 py-6"
+              className="border-ocean-foreground/40 text-ocean-foreground bg-ocean-foreground/10 hover:bg-ocean-foreground/20 font-body text-lg px-10 py-6 backdrop-blur-sm"
             >
               Ver Embarcaciones
             </Button>
