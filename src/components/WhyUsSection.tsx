@@ -51,7 +51,7 @@ const WhyUsSection = () => {
             ¿Por qué Nàutica Negobà?
           </h2>
           <p className="font-body text-muted-foreground mt-6 text-lg leading-relaxed">
-            Más de una década ofreciendo experiencias náuticas inolvidables en la costa catalana.
+            3 años de experiencia técnica especializada ofreciendo experiencias náuticas inolvidables en la costa del Garraf.
           </p>
         </div>
 

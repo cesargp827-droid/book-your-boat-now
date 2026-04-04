@@ -36,7 +36,7 @@ const HeroSection = () => {
             Explora el Mediterráneo con la Confianza de los Expertos
           </h1>
           <p className="animate-fade-up-delay-2 font-body text-lg sm:text-xl text-ocean-foreground/80 mt-8 max-w-2xl mx-auto leading-relaxed">
-            Alquiler de barcos en Castelldefels y Port Ginesta. Experiencias náuticas premium en la costa del Garraf con más de una década de experiencia.
+            Alquiler de barcos en Castelldefels y Port Ginesta. Experiencias náuticas premium en la costa del Garraf con 3 años de experiencia técnica especializada.
           </p>
           <div className="animate-fade-up-delay-3 flex flex-col sm:flex-row gap-4 justify-center mt-12">
             <Button
@@ -73,10 +73,10 @@ const HeroSection = () => {
               Nuestra Historia
             </p>
             <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-8">
-              Más de una Década de Experiencia en el Mar
+              3 Años de Experiencia Técnica Especializada
             </h2>
             <p className="font-body text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto mb-16">
-              Nàutica Negobà nace de la unión de <strong className="text-foreground">tres socios con más de una década de experiencia técnica</strong> en el sector náutico. Dos de ellos ya operaban en esta misma náutica de Port Ginesta, lo que garantiza un conocimiento profundo de la flota, las rutas y las condiciones del Garraf. Operamos desde Port Ginesta brindando la mejor experiencia náutica para los residentes y turistas de <strong className="text-foreground">Castelldefels</strong>. <strong className="text-foreground">Seguridad, profesionalidad y pasión</strong> por el mar definen cada una de nuestras salidas.
+              Nàutica Negobà nace de la unión de <strong className="text-foreground">tres socios con 3 años de sólida experiencia técnica especializada</strong> en el sector náutico. Dos de ellos ya operaban en esta misma náutica de Port Ginesta, lo que garantiza un <strong className="text-foreground">conocimiento profundo de las rutas y condiciones del Garraf</strong> pese a la juventud de la marca. Operamos desde Port Ginesta brindando la mejor experiencia náutica para los residentes y turistas de <strong className="text-foreground">Castelldefels</strong>. <strong className="text-foreground">Seguridad, profesionalidad y pasión</strong> por el mar definen cada una de nuestras salidas.
             </p>
 
             <div className="grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
@@ -84,8 +84,8 @@ const HeroSection = () => {
                 <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
                   <Award className="h-5 w-5 text-primary" />
                 </div>
-                <p className="font-display text-2xl font-bold text-foreground mb-1">+10 años</p>
-                <p className="font-body text-muted-foreground text-sm">de experiencia técnica</p>
+                <p className="font-display text-2xl font-bold text-foreground mb-1">3 años</p>
+                <p className="font-body text-muted-foreground text-sm">de experiencia especializada</p>
               </div>
               <div className="bg-card rounded-xl p-8 shadow-card">
                 <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
