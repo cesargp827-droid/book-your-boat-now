@@ -1,4 +1,5 @@
 import { Compass, ShieldCheck, Star, MapPin, Wrench, Users } from "lucide-react";
+import { useReveal } from "@/hooks/useReveal";
 
 const reasons = [
   {
@@ -40,17 +41,19 @@ const reasons = [
 ];
 
 const WhyUsSection = () => {
+  const ref = useReveal();
+
   return (
     <section className="py-28 lg:py-36 bg-sand">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4" ref={ref}>
         <div className="text-center mb-20 max-w-2xl mx-auto">
-          <p className="font-body font-semibold text-primary tracking-[0.3em] uppercase text-xs mb-5">
+          <p data-reveal className="font-body font-semibold text-primary tracking-[0.3em] uppercase text-xs mb-5">
             La Diferencia
           </p>
-          <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground">
+          <h2 data-reveal className="font-display text-3xl lg:text-5xl font-bold text-foreground">
             ¿Por qué Nàutica Negobà?
           </h2>
-          <p className="font-body text-muted-foreground mt-6 text-lg leading-relaxed">
+          <p data-reveal className="font-body text-muted-foreground mt-6 text-lg leading-relaxed">
             3 años de experiencia técnica especializada ofreciendo experiencias náuticas inolvidables en la costa del Garraf.
           </p>
         </div>
@@ -59,6 +62,7 @@ const WhyUsSection = () => {
           {reasons.map(({ icon: Icon, title, description }) => (
             <div
               key={title}
+              data-reveal
               className="bg-card rounded-xl p-8 shadow-card hover:shadow-card-hover transition-all duration-300 group"
             >
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 mb-5 group-hover:bg-primary/15 transition-colors">

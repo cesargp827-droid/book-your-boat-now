@@ -8,8 +8,11 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { SkipperProvider } from "@/context/SkipperContext";
+import { useLenis } from "@/hooks/useLenis";
 
 const Index = () => {
+  useLenis();
+
   return (
     <SkipperProvider>
       <main className="min-h-screen">

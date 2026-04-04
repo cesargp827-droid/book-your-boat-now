@@ -1,17 +1,20 @@
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { useReveal } from "@/hooks/useReveal";
 
 const ContactSection = () => {
+  const ref = useReveal();
+
   return (
     <section id="contact" className="py-28 lg:py-36 bg-primary text-ocean-foreground">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4" ref={ref}>
         <div className="text-center mb-20 max-w-2xl mx-auto">
-          <p className="font-body font-semibold text-gold tracking-[0.3em] uppercase text-xs mb-5">
+          <p data-reveal className="font-body font-semibold text-gold tracking-[0.3em] uppercase text-xs mb-5">
             Contacto
           </p>
-          <h2 className="font-display text-3xl lg:text-5xl font-bold">
+          <h2 data-reveal className="font-display text-3xl lg:text-5xl font-bold">
             ¿Tienes dudas?
           </h2>
-          <p className="font-body text-ocean-foreground/60 mt-6 text-lg">
+          <p data-reveal className="font-body text-ocean-foreground/60 mt-6 text-lg">
             Estamos encantados de ayudarte a planificar tu próxima aventura en el mar.
           </p>
         </div>
@@ -23,7 +26,7 @@ const ContactSection = () => {
             { icon: Mail, title: "Email", text: "info@nauticanegoba.com" },
             { icon: Clock, title: "Horario", text: "L-D: 9:00 - 20:00" },
           ].map(({ icon: Icon, title, text }) => (
-            <div key={title} className="text-center">
+            <div key={title} data-reveal className="text-center">
               <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gold/10 mb-4">
                 <Icon className="h-5 w-5 text-gold" />
               </div>
