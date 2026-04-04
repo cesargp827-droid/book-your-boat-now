@@ -36,7 +36,7 @@ const HeroSection = () => {
             Explora el Mediterráneo con la Confianza de los Expertos
           </h1>
           <p className="animate-fade-up-delay-2 font-body text-lg sm:text-xl text-ocean-foreground/80 mt-8 max-w-2xl mx-auto leading-relaxed">
-            Alquiler de barcos en Castelldefels y Port Ginesta. Experiencias náuticas premium en la costa del Garraf con más de una década de experiencia.
+            Alquiler de barcos en Castelldefels y Port Ginesta. Experiencias náuticas premium en la costa del Garraf con 3 años de experiencia técnica especializada.
           </p>
           <div className="animate-fade-up-delay-3 flex flex-col sm:flex-row gap-4 justify-center mt-12">
             <Button
