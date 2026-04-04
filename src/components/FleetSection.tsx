@@ -82,11 +82,11 @@ const FleetSection = () => {
     <section id="fleet" className="py-28 lg:py-36 bg-background">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-20 max-w-2xl mx-auto">
-          <p className="font-body font-semibold text-primary tracking-[0.3em] uppercase text-xs mb-5">
+        <div className="text-center mb-20 max-w-2xl mx-auto" ref={headerRef}>
+          <p data-reveal className="font-body font-semibold text-primary tracking-[0.3em] uppercase text-xs mb-5">
             Nuestra Flota
           </p>
-          <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground">
+          <h2 data-reveal className="font-display text-3xl lg:text-5xl font-bold text-foreground">
             {selectedBoat ? "Configura tu Alquiler" : "Alquiler de Barcos en Castelldefels y Port Ginesta"}
           </h2>
           <p className="font-body text-muted-foreground mt-6 text-lg leading-relaxed">
