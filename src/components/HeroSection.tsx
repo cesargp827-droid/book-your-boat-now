@@ -84,8 +84,8 @@ const HeroSection = () => {
                 <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
                   <Award className="h-5 w-5 text-primary" />
                 </div>
-                <p className="font-display text-2xl font-bold text-foreground mb-1">+10 años</p>
-                <p className="font-body text-muted-foreground text-sm">de experiencia técnica</p>
+                <p className="font-display text-2xl font-bold text-foreground mb-1">3 años</p>
+                <p className="font-body text-muted-foreground text-sm">de experiencia especializada</p>
               </div>
               <div className="bg-card rounded-xl p-8 shadow-card">
                 <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
