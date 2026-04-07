@@ -142,61 +142,53 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* ===== MOBILE NAVBAR — visible only on mobile, fondo blanco ===== */}
+      {/* ===== MOBILE NAVBAR — visible only on mobile, fondo azul corporativo ===== */}
       <nav
-        className={`md:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${
-          scrolled ? "shadow-md" : "shadow-sm"
+        className={`md:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary ${
+          scrolled ? "shadow-lg" : ""
         }`}
       >
         <div className="flex items-center h-14 px-4">
-          {/* Izquierda — hamburguesa */}
+          {/* Izquierda — hamburguesa blanca */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-primary p-1"
+            className="text-primary-foreground p-1"
             aria-label="Menú"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
 
-          {/* Centro — logo + nombre */}
-          <div className="flex-1 flex items-center justify-center gap-2">
+          {/* Centro — logo en blanco */}
+          <div className="flex-1 flex items-center justify-center">
             <img
               src={logoImg}
               alt="Nàutica Negobà"
-              className="h-8 w-auto"
+              className="h-9 w-auto brightness-[10]"
+              style={{ filter: "brightness(10)" }}
             />
-            <span className="font-display text-primary font-semibold text-sm tracking-wide">
-              Nàutica Negobà
-            </span>
           </div>
 
-          {/* Derecha — icono contacto/reserva */}
-          <button
-            onClick={() => navigate("/reservar")}
-            className="bg-gold text-gold-foreground p-2 rounded-lg"
-            aria-label="Reservar"
-          >
-            <Phone className="h-4 w-4" />
-          </button>
+          {/* Derecha — espacio vacío para equilibrar */}
+          <div className="w-8" />
         </div>
 
         {/* Mobile Menu desplegable */}
         {isOpen && (
-          <div className="bg-white border-t border-border px-4 pb-4 pt-3 space-y-1 shadow-lg">
+          <div className="bg-primary border-t border-primary-foreground/10 px-4 pb-4 pt-3 space-y-1">
             <button
               onClick={() => scrollTo("hero")}
-              className="block w-full text-left text-primary hover:text-gold font-body font-medium py-2.5 transition-colors"
+              className="block w-full text-left text-primary-foreground/80 hover:text-gold font-body font-medium py-2.5 transition-colors"
             >
               Inicio
             </button>
 
-            <p className="text-muted-foreground text-[10px] font-body uppercase tracking-wider pt-2 pb-1 px-1">
+            <p className="text-primary-foreground/40 text-[10px] font-body uppercase tracking-wider pt-2 pb-1 px-1">
               Alquileres
             </p>
             <button
               onClick={() => handleSkipperChoice(false)}
               className={`block w-full text-left font-body py-2.5 pl-3 transition-colors ${
-                !withSkipper ? "text-gold font-semibold" : "text-primary/60"
+                !withSkipper ? "text-gold font-semibold" : "text-primary-foreground/60"
               }`}
             >
               Con Licencia
@@ -204,7 +196,7 @@ const Navbar = () => {
             <button
               onClick={() => handleSkipperChoice(true)}
               className={`block w-full text-left font-body py-2.5 pl-3 transition-colors ${
-                withSkipper ? "text-gold font-semibold" : "text-primary/60"
+                withSkipper ? "text-gold font-semibold" : "text-primary-foreground/60"
               }`}
             >
               Con Patrón
@@ -212,14 +204,14 @@ const Navbar = () => {
 
             <button
               onClick={() => scrollTo("offers")}
-              className="block w-full text-left text-primary hover:text-gold font-body font-medium py-2.5 transition-colors"
+              className="block w-full text-left text-primary-foreground/80 hover:text-gold font-body font-medium py-2.5 transition-colors"
             >
               Ofertas <span className="text-gold text-[10px] font-bold">(Mayo)</span>
             </button>
 
             <button
               onClick={() => scrollTo("faq")}
-              className="block w-full text-left text-primary hover:text-gold font-body font-medium py-2.5 transition-colors"
+              className="block w-full text-left text-primary-foreground/80 hover:text-gold font-body font-medium py-2.5 transition-colors"
             >
               FAQ
             </button>
