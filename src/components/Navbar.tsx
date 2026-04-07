@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useSkipper } from "@/context/SkipperContext";
@@ -42,126 +42,161 @@ const Navbar = () => {
     scrollTo("fleet");
   };
 
-  const navLinkClass =
+  const desktopLinkClass =
     "text-sand/80 hover:text-gold font-body font-medium text-sm tracking-wide transition-colors";
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary ${
-        scrolled ? "shadow-lg border-b border-sand/5" : ""
-      }`}
-    >
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center h-16 lg:h-20 gap-10">
-          {/* Logo integrated with nav */}
-          <button onClick={() => scrollTo("hero")} className="flex items-center gap-2.5 flex-shrink-0">
-            <img
-              src={logoImg}
-              alt="Nàutica Negobà - Alquiler de barcos en Castelldefels"
-              className="h-9 lg:h-11 w-auto opacity-90 brightness-110"
-            />
-          </button>
-
-          {/* Desktop Nav — inline with logo */}
-          <div className="hidden md:flex items-center gap-8 flex-1">
-            <button onClick={() => scrollTo("hero")} className={navLinkClass}>
-              Inicio
+    <>
+      {/* ===== DESKTOP NAVBAR — hidden on mobile ===== */}
+      <nav
+        className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary ${
+          scrolled ? "shadow-lg border-b border-sand/5" : ""
+        }`}
+      >
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="flex items-center h-16 lg:h-20">
+            {/* Logo — extremo izquierdo */}
+            <button onClick={() => scrollTo("hero")} className="flex items-center gap-2.5 flex-shrink-0 mr-12">
+              <img
+                src={logoImg}
+                alt="Nàutica Negobà - Alquiler de barcos en Castelldefels"
+                className="h-9 lg:h-11 w-auto brightness-[10] invert-0 opacity-95"
+                style={{ filter: "brightness(10)" }}
+              />
             </button>
 
-            {/* Alquileres dropdown */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className={`flex items-center gap-1 ${navLinkClass}`}
-              >
-                Alquileres
-                <ChevronDown className={`h-3.5 w-3.5 transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
+            {/* Nav links — centro */}
+            <div className="flex items-center gap-8 flex-1 justify-center">
+              <button onClick={() => scrollTo("hero")} className={desktopLinkClass}>
+                Inicio
               </button>
 
-              {dropdownOpen && (
-                <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-card rounded-xl shadow-xl border border-border overflow-hidden min-w-[220px] animate-in fade-in slide-in-from-top-2 duration-200">
-                  <button
-                    onClick={() => handleSkipperChoice(false)}
-                    className={`w-full px-5 py-3.5 text-left font-body text-sm transition-colors flex flex-col gap-0.5 ${
-                      !withSkipper
-                        ? "bg-primary/5 text-primary font-semibold"
-                        : "text-foreground hover:bg-muted"
-                    }`}
-                  >
-                    <span>Con Licencia</span>
-                    <span className="text-[11px] text-muted-foreground font-normal">
-                      Navega por tu cuenta con tu licencia
-                    </span>
-                  </button>
-                  <div className="border-t border-border" />
-                  <button
-                    onClick={() => handleSkipperChoice(true)}
-                    className={`w-full px-5 py-3.5 text-left font-body text-sm transition-colors flex flex-col gap-0.5 ${
-                      withSkipper
-                        ? "bg-gold/10 text-gold font-semibold"
-                        : "text-foreground hover:bg-muted"
-                    }`}
-                  >
-                    <span>Con Patrón</span>
-                    <span className="text-[11px] text-muted-foreground font-normal">
-                      Capitán profesional incluido (+45€)
-                    </span>
-                  </button>
-                </div>
-              )}
+              {/* Alquileres dropdown */}
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setDropdownOpen(!dropdownOpen)}
+                  className={`flex items-center gap-1 ${desktopLinkClass}`}
+                >
+                  Alquileres
+                  <ChevronDown className={`h-3.5 w-3.5 transition-transform ${dropdownOpen ? "rotate-180" : ""}`} />
+                </button>
+
+                {dropdownOpen && (
+                  <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-card rounded-xl shadow-xl border border-border overflow-hidden min-w-[220px] animate-in fade-in slide-in-from-top-2 duration-200">
+                    <button
+                      onClick={() => handleSkipperChoice(false)}
+                      className={`w-full px-5 py-3.5 text-left font-body text-sm transition-colors flex flex-col gap-0.5 ${
+                        !withSkipper
+                          ? "bg-primary/5 text-primary font-semibold"
+                          : "text-foreground hover:bg-muted"
+                      }`}
+                    >
+                      <span>Con Licencia</span>
+                      <span className="text-[11px] text-muted-foreground font-normal">
+                        Navega por tu cuenta con tu licencia
+                      </span>
+                    </button>
+                    <div className="border-t border-border" />
+                    <button
+                      onClick={() => handleSkipperChoice(true)}
+                      className={`w-full px-5 py-3.5 text-left font-body text-sm transition-colors flex flex-col gap-0.5 ${
+                        withSkipper
+                          ? "bg-gold/10 text-gold font-semibold"
+                          : "text-foreground hover:bg-muted"
+                      }`}
+                    >
+                      <span>Con Patrón</span>
+                      <span className="text-[11px] text-muted-foreground font-normal">
+                        Capitán profesional incluido (+100€)
+                      </span>
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              <button onClick={() => scrollTo("offers")} className={desktopLinkClass}>
+                Ofertas{" "}
+                <span className="text-gold text-[10px] font-bold ml-1">(Mayo)</span>
+              </button>
+
+              <button onClick={() => scrollTo("faq")} className={desktopLinkClass}>
+                FAQ
+              </button>
             </div>
 
-            <button onClick={() => scrollTo("offers")} className={navLinkClass}>
-              Ofertas{" "}
-              <span className="text-gold text-[10px] font-bold ml-1">(Marzo)</span>
-            </button>
-
-            <button onClick={() => scrollTo("faq")} className={navLinkClass}>
-              FAQ
-            </button>
+            {/* CTA — extremo derecho */}
+            <div className="flex items-center gap-3 flex-shrink-0">
+              {withSkipper && (
+                <span className="text-[11px] font-body font-semibold text-gold bg-gold/10 px-3 py-1.5 rounded-full">
+                  Con Patrón
+                </span>
+              )}
+              <Button
+                onClick={() => navigate("/reservar")}
+                className="bg-gold hover:bg-gold/90 text-gold-foreground font-body font-bold px-6"
+              >
+                Reservar
+              </Button>
+            </div>
           </div>
+        </div>
+      </nav>
 
-          {/* CTA — pushed right */}
-          <div className="hidden md:flex items-center gap-3 ml-auto">
-            {withSkipper && (
-              <span className="text-[11px] font-body font-semibold text-gold bg-gold/10 px-3 py-1.5 rounded-full">
-                Con Patrón
-              </span>
-            )}
-            <Button
-              onClick={() => navigate("/reservar")}
-              className="bg-gold hover:bg-gold/90 text-gold-foreground font-body font-bold px-6"
-            >
-              Reservar
-            </Button>
-          </div>
-
-          {/* Mobile Toggle */}
+      {/* ===== MOBILE NAVBAR — visible only on mobile, fondo blanco ===== */}
+      <nav
+        className={`md:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${
+          scrolled ? "shadow-md" : "shadow-sm"
+        }`}
+      >
+        <div className="flex items-center h-14 px-4">
+          {/* Izquierda — hamburguesa */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-sand ml-auto"
+            className="text-primary p-1"
+            aria-label="Menú"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
+
+          {/* Centro — logo + nombre */}
+          <div className="flex-1 flex items-center justify-center gap-2">
+            <img
+              src={logoImg}
+              alt="Nàutica Negobà"
+              className="h-8 w-auto"
+            />
+            <span className="font-display text-primary font-semibold text-sm tracking-wide">
+              Nàutica Negobà
+            </span>
+          </div>
+
+          {/* Derecha — icono contacto/reserva */}
+          <button
+            onClick={() => navigate("/reservar")}
+            className="bg-gold text-gold-foreground p-2 rounded-lg"
+            aria-label="Reservar"
+          >
+            <Phone className="h-4 w-4" />
+          </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu desplegable */}
         {isOpen && (
-          <div className="md:hidden pb-4 border-t border-sand/10 mt-2 pt-4 space-y-1">
+          <div className="bg-white border-t border-border px-4 pb-4 pt-3 space-y-1 shadow-lg">
             <button
               onClick={() => scrollTo("hero")}
-              className="block w-full text-left text-sand/80 hover:text-gold font-body py-2.5 transition-colors"
+              className="block w-full text-left text-primary hover:text-gold font-body font-medium py-2.5 transition-colors"
             >
               Inicio
             </button>
 
-            <p className="text-sand/40 text-[10px] font-body uppercase tracking-wider pt-2 pb-1 px-1">
+            <p className="text-muted-foreground text-[10px] font-body uppercase tracking-wider pt-2 pb-1 px-1">
               Alquileres
             </p>
             <button
               onClick={() => handleSkipperChoice(false)}
               className={`block w-full text-left font-body py-2.5 pl-3 transition-colors ${
-                !withSkipper ? "text-gold font-semibold" : "text-sand/60"
+                !withSkipper ? "text-gold font-semibold" : "text-primary/60"
               }`}
             >
               Con Licencia
@@ -169,7 +204,7 @@ const Navbar = () => {
             <button
               onClick={() => handleSkipperChoice(true)}
               className={`block w-full text-left font-body py-2.5 pl-3 transition-colors ${
-                withSkipper ? "text-gold font-semibold" : "text-sand/60"
+                withSkipper ? "text-gold font-semibold" : "text-primary/60"
               }`}
             >
               Con Patrón
@@ -177,14 +212,14 @@ const Navbar = () => {
 
             <button
               onClick={() => scrollTo("offers")}
-              className="block w-full text-left text-sand/80 hover:text-gold font-body py-2.5 transition-colors"
+              className="block w-full text-left text-primary hover:text-gold font-body font-medium py-2.5 transition-colors"
             >
-              Ofertas <span className="text-gold text-[10px] font-bold">(Marzo)</span>
+              Ofertas <span className="text-gold text-[10px] font-bold">(Mayo)</span>
             </button>
 
             <button
               onClick={() => scrollTo("faq")}
-              className="block w-full text-left text-sand/80 hover:text-gold font-body py-2.5 transition-colors"
+              className="block w-full text-left text-primary hover:text-gold font-body font-medium py-2.5 transition-colors"
             >
               FAQ
             </button>
@@ -193,12 +228,12 @@ const Navbar = () => {
               onClick={() => { navigate("/reservar"); setIsOpen(false); }}
               className="w-full bg-gold hover:bg-gold/90 text-gold-foreground font-body font-bold mt-3"
             >
-              Reservar
+              Reservar Ahora
             </Button>
           </div>
         )}
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 };
 
