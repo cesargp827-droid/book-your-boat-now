@@ -60,7 +60,7 @@ const Navbar = () => {
               <img
                 src={logoImg}
                 alt="Nàutica Negobà - Alquiler de barcos en Castelldefels"
-                className="h-9 lg:h-11 w-auto brightness-[10] invert-0 opacity-95"
+                className="h-12 lg:h-14 w-auto brightness-[10] invert-0 opacity-95"
                 style={{ filter: "brightness(10)" }}
               />
             </button>
@@ -163,7 +163,7 @@ const Navbar = () => {
             <img
               src={logoImg}
               alt="Nàutica Negobà"
-              className="h-9 w-auto brightness-[10]"
+              className="h-10 w-auto brightness-[10]"
               style={{ filter: "brightness(10)" }}
             />
           </div>
