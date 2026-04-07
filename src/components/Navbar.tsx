@@ -158,18 +158,21 @@ const Navbar = () => {
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
 
-          {/* Centro — logo en blanco */}
-          <div className="flex-1 flex items-center justify-center">
+          {/* Centro — logo + nombre en blanco */}
+          <div className="flex-1 flex items-center justify-center gap-2 max-w-[60%] mx-auto">
             <img
               src={logoImg}
               alt="Nàutica Negobà"
-              className="h-10 w-auto brightness-[10]"
+              className="h-9 w-auto brightness-[10] flex-shrink-0"
               style={{ filter: "brightness(10)" }}
             />
+            <span className="font-display text-primary-foreground font-semibold text-sm tracking-wide whitespace-nowrap">
+              Nàutica Negobà
+            </span>
           </div>
 
           {/* Derecha — espacio vacío para equilibrar */}
-          <div className="w-8" />
+          <div className="w-8 flex-shrink-0" />
         </div>
 
         {/* Mobile Menu desplegable */}
