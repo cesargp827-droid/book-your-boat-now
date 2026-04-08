@@ -59,14 +59,14 @@ const OffersSection = () => {
   };
 
   return (
-    <section id="offers" className="py-28 lg:py-36 bg-primary text-ocean-foreground">
+    <section id="offers" className="py-16 lg:py-36 bg-primary text-ocean-foreground">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-20 max-w-2xl mx-auto">
+        <div className="text-center mb-10 lg:mb-20 max-w-2xl mx-auto">
           <p className="font-body font-semibold text-gold tracking-[0.3em] uppercase text-xs mb-5">
             Oferta Especial Marzo
           </p>
-          <h2 className="font-display text-4xl lg:text-5xl font-bold leading-tight">
+          <h2 className="font-display text-2xl lg:text-5xl font-bold leading-tight">
             Pack VIP — 4h + 2h GRATIS
           </h2>
           <p className="font-body text-ocean-foreground/60 mt-6 text-lg leading-relaxed">
@@ -75,17 +75,17 @@ const OffersSection = () => {
         </div>
 
         {/* Value Stack */}
-        <div className="max-w-4xl mx-auto mb-24">
-          <h3 className="font-display text-2xl lg:text-3xl font-bold text-center mb-12">
-            Todo lo que incluye tu <span className="text-gold">Pack VIP</span>
-          </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+         <div className="max-w-4xl mx-auto mb-14 lg:mb-24">
+           <h3 className="font-display text-xl lg:text-3xl font-bold text-center mb-8 lg:mb-12">
+             Todo lo que incluye tu <span className="text-gold">Pack VIP</span>
+           </h3>
+           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
             {valueStack.map((extra) => (
               <div
                 key={extra.title}
-                className="bg-midnight rounded-xl p-7 text-center border border-ocean-foreground/5 hover:border-gold/20 transition-all duration-300"
-              >
-                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gold/10 flex items-center justify-center">
+                 className="bg-midnight rounded-xl p-4 lg:p-7 text-center border border-ocean-foreground/5 hover:border-gold/20 transition-all duration-300"
+               >
+                 <div className="w-10 h-10 lg:w-12 lg:h-12 mx-auto mb-3 lg:mb-4 rounded-xl bg-gold/10 flex items-center justify-center">
                   <extra.icon className="h-5 w-5 text-gold" />
                 </div>
                 <p className="font-body font-semibold text-sm mb-1">{extra.title}</p>
@@ -98,7 +98,7 @@ const OffersSection = () => {
           </div>
 
           {/* Savings callout */}
-          <div className="mt-12 border border-gold/10 rounded-2xl p-10 lg:p-12 text-center bg-gold/[0.03]">
+          <div className="mt-8 lg:mt-12 border border-gold/10 rounded-2xl p-6 lg:p-12 text-center bg-gold/[0.03]">
             <p className="font-body text-ocean-foreground/50 text-sm mb-3">
               Si contratases todo por separado, pagarías más de{" "}
               <strong className="text-ocean-foreground line-through">400 €</strong>
@@ -106,7 +106,7 @@ const OffersSection = () => {
             <p className="font-display text-xl font-semibold text-ocean-foreground/80 mb-2">
               Con nosotros, ahorras más de
             </p>
-            <p className="font-display text-5xl lg:text-6xl font-bold text-gold tracking-tight">
+            <p className="font-display text-4xl lg:text-6xl font-bold text-gold tracking-tight">
               80 €
             </p>
             <p className="font-body text-ocean-foreground/40 mt-3 text-sm">
@@ -116,7 +116,7 @@ const OffersSection = () => {
         </div>
 
         {/* Offer Cards */}
-        <div className="grid lg:grid-cols-3 gap-10 max-w-6xl mx-auto mb-24">
+        <div className="grid lg:grid-cols-3 gap-5 lg:gap-10 max-w-6xl mx-auto mb-14 lg:mb-24">
           {offers.map((o) => {
             const cap = getCapacity(o.capacity);
             const total = getTotal(o.perPerson, o.capacity);
@@ -151,7 +151,7 @@ const OffersSection = () => {
                   </div>
                 </div>
 
-                <div className="p-7 flex flex-col flex-1">
+                <div className="p-4 lg:p-7 flex flex-col flex-1">
                   <p className="font-body text-[11px] text-ocean-foreground/40 mb-5 uppercase tracking-wider">
                     6h navegación · Donut · Mini-bar · Clase
                   </p>
@@ -159,7 +159,7 @@ const OffersSection = () => {
                   <div className="flex items-end justify-between mb-5">
                     <div>
                       <div className="flex items-baseline gap-1">
-                        <span className="font-display text-3xl font-bold text-gold">{o.perPerson}</span>
+                        <span className="font-display text-2xl lg:text-3xl font-bold text-gold">{o.perPerson}</span>
                         <span className="font-body text-sm text-ocean-foreground/40">€/pers.</span>
                       </div>
                       <p className="font-body text-xs text-ocean-foreground/30 mt-1">
@@ -175,7 +175,7 @@ const OffersSection = () => {
                     </p>
                     <Button
                       onClick={() => goToBooking(o.boatValue)}
-                      className="w-full bg-gold hover:bg-gold/90 text-gold-foreground font-body font-bold py-5 rounded-xl"
+                      className="w-full bg-gold hover:bg-gold/90 text-gold-foreground font-body font-bold py-3 lg:py-5 rounded-xl text-sm lg:text-base"
                     >
                       Reservar Pack VIP <ArrowRight className="h-4 w-4 ml-2" />
                     </Button>
