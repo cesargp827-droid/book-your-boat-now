@@ -49,8 +49,8 @@ const Navbar = () => {
     <>
       {/* ===== DESKTOP NAVBAR — hidden on mobile ===== */}
       <nav
-        className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary ${
-          scrolled ? "shadow-lg border-b border-sand/5" : ""
+        className={`hidden md:block fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled ? "bg-primary shadow-lg border-b border-sand/5" : "bg-transparent"
         }`}
       >
         <div className="container mx-auto px-4 lg:px-8">
@@ -60,7 +60,7 @@ const Navbar = () => {
               <img
                 src={logoImg}
                 alt="Nàutica Negobà - Alquiler de barcos en Castelldefels"
-                className="h-12 lg:h-14 w-auto brightness-[10] invert-0 opacity-95"
+                className="h-14 lg:h-16 w-auto brightness-[10] invert-0 opacity-95"
                 style={{ filter: "brightness(10)" }}
               />
             </button>
@@ -144,8 +144,8 @@ const Navbar = () => {
 
       {/* ===== MOBILE NAVBAR — visible only on mobile, fondo azul corporativo ===== */}
       <nav
-        className={`md:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-primary ${
-          scrolled ? "shadow-lg" : ""
+        className={`md:hidden fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled ? "bg-primary shadow-lg" : "bg-transparent"
         }`}
       >
         <div className="flex items-center h-14 px-4">
@@ -163,7 +163,7 @@ const Navbar = () => {
             <img
               src={logoImg}
               alt="Nàutica Negobà"
-              className="h-9 w-auto brightness-[10] flex-shrink-0"
+              className="h-11 w-auto brightness-[10] flex-shrink-0"
               style={{ filter: "brightness(10)" }}
             />
             <span className="font-display text-primary-foreground font-semibold text-sm tracking-wide whitespace-nowrap">
