@@ -5,6 +5,10 @@ html.lenis, html.lenis body {
   height: auto;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
