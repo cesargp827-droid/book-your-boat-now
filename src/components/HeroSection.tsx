@@ -75,47 +75,61 @@ const HeroSection = () => {
         </div>
       </section>
 
-      {/* About / Story — with scroll reveal */}
-      <section id="about" className="py-28 lg:py-36 bg-sand">
-        <div className="container mx-auto px-4" ref={aboutRef}>
+      {/* About / Story — with video background */}
+      <section id="about" className="relative py-28 lg:py-36 overflow-hidden">
+        {/* Video background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          preload="metadata"
+        >
+          <source src="/videos/historia.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay for legibility */}
+        <div className="absolute inset-0 bg-primary/70" />
+
+        <div className="relative z-10 container mx-auto px-4" ref={aboutRef}>
           <div className="max-w-4xl mx-auto text-center">
-            <p data-reveal className="font-body font-semibold text-primary tracking-[0.3em] uppercase text-xs mb-5">
+            <p data-reveal className="font-body font-semibold text-gold tracking-[0.3em] uppercase text-xs mb-5">
               Nuestra Historia
             </p>
-            <h2 data-reveal className="font-display text-3xl lg:text-5xl font-bold text-foreground mb-8">
+            <h2 data-reveal className="font-display text-3xl lg:text-5xl font-bold text-ocean-foreground mb-8">
               3 Años de Experiencia Técnica Especializada
             </h2>
-            <p data-reveal className="font-body text-muted-foreground text-lg leading-relaxed max-w-3xl mx-auto mb-16">
+            <p data-reveal className="font-body text-ocean-foreground/80 text-lg leading-relaxed max-w-3xl mx-auto mb-16">
               Nàutica Negobà nace de la unión de{" "}
-              <strong className="text-foreground">tres socios con 3 años de sólida experiencia técnica especializada</strong>{" "}
+              <strong className="text-ocean-foreground">tres socios con 3 años de sólida experiencia técnica especializada</strong>{" "}
               en el sector náutico. Dos de ellos ya operaban en esta misma náutica de Port Ginesta, lo que garantiza un{" "}
-              <strong className="text-foreground">conocimiento profundo de las rutas y condiciones del Garraf</strong>{" "}
+              <strong className="text-ocean-foreground">conocimiento profundo de las rutas y condiciones del Garraf</strong>{" "}
               pese a la juventud de la marca. Operamos desde Port Ginesta brindando la mejor experiencia náutica para los residentes y turistas de{" "}
-              <strong className="text-foreground">Castelldefels</strong>.{" "}
-              <strong className="text-foreground">Seguridad, profesionalidad y pasión</strong> por el mar definen cada una de nuestras salidas.
+              <strong className="text-ocean-foreground">Castelldefels</strong>.{" "}
+              <strong className="text-ocean-foreground">Seguridad, profesionalidad y pasión</strong> por el mar definen cada una de nuestras salidas.
             </p>
 
             <div className="grid sm:grid-cols-3 gap-8 max-w-3xl mx-auto">
-              <div data-reveal className="bg-card rounded-xl p-8 shadow-card">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Award className="h-5 w-5 text-primary" />
+              <div data-reveal className="bg-ocean-foreground/10 backdrop-blur-sm rounded-xl p-8 border border-ocean-foreground/20">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gold/20 flex items-center justify-center">
+                  <Award className="h-5 w-5 text-gold" />
                 </div>
-                <p className="font-display text-2xl font-bold text-foreground mb-1">3 años</p>
-                <p className="font-body text-muted-foreground text-sm">de experiencia especializada</p>
+                <p className="font-display text-2xl font-bold text-ocean-foreground mb-1">3 años</p>
+                <p className="font-body text-ocean-foreground/70 text-sm">de experiencia especializada</p>
               </div>
-              <div data-reveal className="bg-card rounded-xl p-8 shadow-card">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Anchor className="h-5 w-5 text-primary" />
+              <div data-reveal className="bg-ocean-foreground/10 backdrop-blur-sm rounded-xl p-8 border border-ocean-foreground/20">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gold/20 flex items-center justify-center">
+                  <Anchor className="h-5 w-5 text-gold" />
                 </div>
-                <p className="font-display text-2xl font-bold text-foreground mb-1">3 barcos</p>
-                <p className="font-body text-muted-foreground text-sm">revisados antes de cada salida</p>
+                <p className="font-display text-2xl font-bold text-ocean-foreground mb-1">3 barcos</p>
+                <p className="font-body text-ocean-foreground/70 text-sm">revisados antes de cada salida</p>
               </div>
-              <div data-reveal className="bg-card rounded-xl p-8 shadow-card">
-                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Shield className="h-5 w-5 text-primary" />
+              <div data-reveal className="bg-ocean-foreground/10 backdrop-blur-sm rounded-xl p-8 border border-ocean-foreground/20">
+                <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-gold/20 flex items-center justify-center">
+                  <Shield className="h-5 w-5 text-gold" />
                 </div>
-                <p className="font-display text-2xl font-bold text-foreground mb-1">Riesgo Cero</p>
-                <p className="font-body text-muted-foreground text-sm">devolución si el clima falla</p>
+                <p className="font-display text-2xl font-bold text-ocean-foreground mb-1">Riesgo Cero</p>
+                <p className="font-body text-ocean-foreground/70 text-sm">devolución si el clima falla</p>
               </div>
             </div>
           </div>
