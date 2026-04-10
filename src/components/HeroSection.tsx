@@ -90,13 +90,13 @@ const HeroSection = () => {
 
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center mb-16">
               {/* Video */}
-              <div data-reveal className="rounded-2xl overflow-hidden shadow-card-hover aspect-video">
+              <div data-reveal className="rounded-2xl overflow-hidden shadow-card-hover">
                 <video
                   autoPlay
                   loop
                   muted
                   playsInline
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto block"
                   preload="metadata"
                 >
                   <source src="/videos/historia.mp4" type="video/mp4" />
