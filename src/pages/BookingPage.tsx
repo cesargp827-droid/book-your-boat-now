@@ -712,10 +712,10 @@ const BookingPage = () => {
               </div>
 
               {/* Payment today = 0 */}
-              <div className="mt-3 bg-emerald-50 dark:bg-emerald-950/30 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800">
+              <div className="mt-3 bg-gold/5 rounded-xl p-4 border border-gold/20">
                 <div className="flex items-center justify-between">
-                  <span className="font-body text-sm font-bold text-emerald-700 dark:text-emerald-400">Pago hoy</span>
-                  <span className="font-display text-2xl font-bold text-emerald-600 dark:text-emerald-400">0 €</span>
+                  <span className="font-body text-sm font-bold text-gold">Pago hoy</span>
+                  <span className="font-display text-2xl font-bold text-gold">0 €</span>
                 </div>
               </div>
 
