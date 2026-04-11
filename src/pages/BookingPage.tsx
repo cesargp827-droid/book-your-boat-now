@@ -16,16 +16,24 @@ import {
 } from "@/components/ui/select";
 import {
   ArrowLeft,
+  Banknote,
   Check,
   Clock,
   CreditCard,
   Droplets,
   Gift,
   ShieldCheck,
+  ShowerHead,
+  Speaker,
   Users,
   Volume2,
   Sparkles,
   Anchor,
+  Ruler,
+  Zap,
+  Umbrella,
+  Waves,
+  Sparkle,
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -40,6 +48,8 @@ const boats = [
     name: "OKIBOATS Barracuda 545",
     image: barracudaImg,
     capacity: 7,
+    power: "100 CV",
+    length: "5.45 m",
     prices: { "2h": 130, "4h": 210, "8h": 300 },
     pack: { perPerson: 35, totalBase: 245, duration: "6h (4h + 2h gratis)" },
   },
@@ -48,6 +58,8 @@ const boats = [
     name: "Nireus 620 CL",
     image: nireusImg,
     capacity: 10,
+    power: "200 CV",
+    length: "6.20 m",
     prices: { "2h": 140, "4h": 250, "8h": 470 },
     pack: { perPerson: 32, totalBase: 320, duration: "6h (4h + 2h gratis)" },
   },
@@ -56,6 +68,8 @@ const boats = [
     name: "Astilux AX 600 Open",
     image: astiluxImg,
     capacity: 7,
+    power: "100 CV",
+    length: "6.00 m",
     prices: { "2h": 130, "4h": 210, "8h": 300 },
     pack: { perPerson: 40, totalBase: 280, duration: "6h (4h + 2h gratis)" },
   },
@@ -88,7 +102,7 @@ const steps = [
   { num: 1, label: "Embarcación" },
   { num: 2, label: "Fecha y Hora" },
   { num: 3, label: "Datos" },
-  { num: 4, label: "Pago" },
+  { num: 4, label: "Confirmación" },
 ];
 
 /* ─── Route selector page ─── */
@@ -111,7 +125,7 @@ const RouteSelector = ({ onSelect }: { onSelect: (route: "vip" | "standard") => 
           onClick={() => onSelect("vip")}
           className="group bg-card rounded-2xl border-2 border-gold/20 hover:border-gold/60 p-8 text-left transition-all duration-300 hover:shadow-lg relative overflow-hidden"
         >
-          <div className="absolute top-4 right-4 bg-gold text-gold-foreground font-body text-[10px] font-bold px-3 py-1 rounded-md uppercase tracking-wider">
+          <div className="absolute top-4 right-4 bg-gold text-gold-foreground font-body text-[10px] font-bold px-3 py-1.5 rounded-md uppercase tracking-wider">
             Oferta
           </div>
           <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center mb-5">
@@ -151,7 +165,17 @@ const RouteSelector = ({ onSelect }: { onSelect: (route: "vip" | "standard") => 
         </button>
       </div>
 
-      <div className="mt-8 flex justify-center">
+      {/* Payment info banner */}
+      <div className="mt-8 bg-card rounded-2xl border border-border p-6 text-center">
+        <div className="flex items-center justify-center gap-3 mb-2">
+          <CreditCard className="h-5 w-5 text-primary" />
+          <Banknote className="h-5 w-5 text-primary" />
+        </div>
+        <p className="font-body text-sm font-bold text-foreground">¡Reserva ahora, paga el día del servicio!</p>
+        <p className="font-body text-xs text-muted-foreground mt-1">Sin pagos hoy · Datáfono o Efectivo en puerto</p>
+      </div>
+
+      <div className="mt-6 flex justify-center">
         <a href="/" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-2">
           <ArrowLeft className="h-4 w-4" /> Volver al inicio
         </a>
@@ -170,7 +194,6 @@ const BookingPage = () => {
   const durationParam = searchParams.get("duration") || "";
   const skipperParam = searchParams.get("skipper") === "1";
 
-  // Determine initial route from URL params
   const initialRoute = packParam === "vip" ? "vip" : boatParam ? "standard" : null;
 
   const [route, setRoute] = useState<"vip" | "standard" | null>(initialRoute);
@@ -218,16 +241,14 @@ const BookingPage = () => {
   };
 
   const handleSubmit = () => {
-    toast.success("¡Solicitud de reserva enviada! Te contactaremos en breve para confirmar el pago.");
+    toast.success("¡Reserva confirmada! Te contactaremos en breve con los detalles.");
   };
 
-  // Reset time slot when duration changes
   const handleDurationChange = (d: string) => {
     setDuration(d);
     setTimeSlot("");
   };
 
-  /* ─── Route selector screen ─── */
   if (!route) {
     return <RouteSelector onSelect={(r) => { setRoute(r); setStep(1); setSelectedBoatValue(""); }} />;
   }
@@ -257,7 +278,7 @@ const BookingPage = () => {
       <div className="container mx-auto px-4 py-8 lg:py-12">
         <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_380px] gap-8">
           {/* Left: Steps */}
-          <div className="bg-card rounded-2xl border border-border shadow-card p-8 lg:p-10">
+          <div className="bg-card rounded-2xl border border-border shadow-card p-6 lg:p-10">
             {/* Stepper */}
             <div className="flex items-center justify-between mb-10 max-w-lg mx-auto">
               {steps.map((s, i) => (
@@ -272,7 +293,7 @@ const BookingPage = () => {
                       {step > s.num ? <Check className="h-4 w-4" /> : s.num}
                     </div>
                     <span className={cn(
-                      "font-body text-xs mt-2 font-medium",
+                      "font-body text-[10px] lg:text-xs mt-2 font-medium",
                       step === s.num ? "text-primary" : "text-muted-foreground"
                     )}>{s.label}</span>
                   </div>
@@ -286,7 +307,7 @@ const BookingPage = () => {
             {/* Step 1: Boat selection */}
             {step === 1 && (
               <div>
-                <h2 className="font-display text-2xl font-bold text-foreground mb-2">
+                <h2 className="font-display text-xl lg:text-2xl font-bold text-foreground mb-2">
                   Elige tu embarcación
                 </h2>
                 <p className="font-body text-sm text-muted-foreground mb-6">
@@ -298,20 +319,33 @@ const BookingPage = () => {
                       key={boat.value}
                       onClick={() => setSelectedBoatValue(boat.value)}
                       className={cn(
-                        "flex items-center gap-4 p-4 rounded-xl border-2 transition-all text-left",
+                        "flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 rounded-xl border-2 transition-all text-left relative",
                         selectedBoatValue === boat.value
                           ? isVip ? "border-gold bg-gold/5" : "border-primary bg-primary/5"
                           : "border-border bg-card hover:border-primary/30"
                       )}
                     >
-                      <img src={boat.image} alt={boat.name} className="w-24 h-16 rounded-lg object-cover flex-shrink-0" />
+                      <img src={boat.image} alt={boat.name} className="w-full sm:w-28 h-20 rounded-lg object-cover flex-shrink-0" />
                       <div className="flex-1 min-w-0">
-                        <p className="font-display text-sm font-bold text-foreground">{boat.name}</p>
-                        <p className="font-body text-xs text-muted-foreground flex items-center gap-3 mt-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <p className="font-display text-sm font-bold text-foreground">{boat.name}</p>
+                          <span className="inline-flex items-center gap-1 bg-accent/10 text-accent font-body text-[9px] font-bold px-2 py-0.5 rounded-md">
+                            <ShieldCheck className="h-2.5 w-2.5" /> Riesgo Cero
+                          </span>
+                        </div>
+                        <p className="font-body text-xs text-muted-foreground flex items-center gap-3 mt-1 flex-wrap">
                           <span className="flex items-center gap-1"><Users className="h-3 w-3" /> {boat.capacity} pers.</span>
-                          <span className="flex items-center gap-1"><Droplets className="h-3 w-3" /> Ducha</span>
-                          <span className="flex items-center gap-1"><Volume2 className="h-3 w-3" /> Altavoces</span>
+                          <span className="flex items-center gap-1"><Zap className="h-3 w-3" /> {boat.power}</span>
+                          <span className="flex items-center gap-1"><Ruler className="h-3 w-3" /> {boat.length}</span>
                         </p>
+                        <div className="flex items-center gap-2 mt-2">
+                          <span className="inline-flex items-center gap-1 bg-muted text-muted-foreground font-body text-[10px] px-2 py-1 rounded-md">
+                            <ShowerHead className="h-3 w-3 text-primary" /> Ducha
+                          </span>
+                          <span className="inline-flex items-center gap-1 bg-muted text-muted-foreground font-body text-[10px] px-2 py-1 rounded-md">
+                            <Speaker className="h-3 w-3 text-primary" /> Altavoces HQ
+                          </span>
+                        </div>
                       </div>
                       <div className="text-right flex-shrink-0">
                         {isVip ? (
@@ -321,14 +355,14 @@ const BookingPage = () => {
                           </>
                         ) : (
                           <>
-                            <p className="font-display text-lg font-bold text-primary">{boat.prices["4h"]}€</p>
-                            <p className="font-body text-[10px] text-muted-foreground">desde 4h</p>
+                            <p className="font-display text-lg font-bold text-primary">Desde {boat.prices["2h"]}€</p>
+                            <p className="font-body text-[10px] text-muted-foreground">/barco</p>
                           </>
                         )}
                       </div>
                       {selectedBoatValue === boat.value && (
                         <div className={cn(
-                          "w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0",
+                          "absolute top-3 right-3 sm:static w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0",
                           isVip ? "bg-gold text-gold-foreground" : "bg-primary text-primary-foreground"
                         )}>
                           <Check className="h-3.5 w-3.5" />
@@ -344,11 +378,10 @@ const BookingPage = () => {
             {step === 2 && (
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="font-display text-2xl font-bold text-foreground">Fecha y Horario</h2>
+                  <h2 className="font-display text-xl lg:text-2xl font-bold text-foreground">Fecha y Horario</h2>
                   <button onClick={goBack} className="font-body text-sm text-primary hover:underline">Cambiar barco</button>
                 </div>
 
-                {/* Duration selector (only for standard) */}
                 {!isVip && (
                   <div className="mb-6">
                     <p className="font-body text-sm font-semibold text-foreground mb-3">Duración:</p>
@@ -380,7 +413,6 @@ const BookingPage = () => {
                   </div>
                 )}
 
-                {/* Calendar */}
                 <p className="font-body text-sm font-semibold text-foreground mb-3">Fecha:</p>
                 <div className="flex justify-center mb-6">
                   <Calendar
@@ -414,7 +446,6 @@ const BookingPage = () => {
                   />
                 </div>
 
-                {/* Time slots */}
                 {date && (
                   <>
                     <p className="font-body text-sm font-semibold text-foreground mb-3">
@@ -447,7 +478,7 @@ const BookingPage = () => {
             {step === 3 && (
               <div>
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="font-display text-2xl font-bold text-foreground">Tus datos</h2>
+                  <h2 className="font-display text-xl lg:text-2xl font-bold text-foreground">Tus datos</h2>
                   <button onClick={() => setStep(2)} className="font-body text-sm text-primary hover:underline">Cambiar horario</button>
                 </div>
                 <div className="space-y-5">
@@ -482,16 +513,70 @@ const BookingPage = () => {
               </div>
             )}
 
-            {/* Step 4: Payment */}
+            {/* Step 4: Confirmation */}
             {step === 4 && (
-              <div className="text-center py-8">
-                <h2 className="font-display text-2xl font-bold text-foreground mb-4">Confirmar y Pagar</h2>
-                <p className="font-body text-muted-foreground mb-8 max-w-md mx-auto">
-                  Revisa el resumen de tu reserva y pulsa el botón para completar el pago.
-                </p>
-                <Button onClick={handleSubmit} size="lg" className="bg-gold hover:bg-gold/90 text-gold-foreground font-body font-bold text-lg px-12 py-6 rounded-xl">
-                  <CreditCard className="h-5 w-5 mr-2" /> Continuar al pago — {finalPrice}€
+              <div className="py-4">
+                <h2 className="font-display text-xl lg:text-2xl font-bold text-foreground mb-6 text-center">Confirmar Reserva</h2>
+
+                {/* Payment info */}
+                <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6 mb-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+                      <CreditCard className="h-5 w-5 text-accent" />
+                    </div>
+                    <div>
+                      <p className="font-body text-sm font-bold text-foreground">Sin pagos hoy</p>
+                      <p className="font-body text-xs text-muted-foreground">
+                        El importe total se abona el día del servicio antes de embarcar
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 mt-4">
+                    <span className="inline-flex items-center gap-1.5 font-body text-xs text-muted-foreground bg-muted px-3 py-1.5 rounded-lg">
+                      <CreditCard className="h-3.5 w-3.5 text-primary" /> Datáfono
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 font-body text-xs text-muted-foreground bg-muted px-3 py-1.5 rounded-lg">
+                      <Banknote className="h-3.5 w-3.5 text-primary" /> Efectivo
+                    </span>
+                  </div>
+                </div>
+
+                {/* Deposit info */}
+                <div className="bg-primary/5 border border-primary/15 rounded-2xl p-6 mb-6">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <ShieldCheck className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-body text-sm font-bold text-foreground">Fianza: 400 €</p>
+                      <p className="font-body text-xs text-muted-foreground mt-1 leading-relaxed">
+                        Preautorización con datáfono el día del servicio. <strong className="text-foreground">No se cobra</strong>, solo se retiene temporalmente. Se libera automáticamente al finalizar si el barco está perfecto.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Cancellation guarantee */}
+                <div className="bg-gold/5 border border-gold/15 rounded-2xl p-6 mb-8">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0">
+                      <ShieldCheck className="h-5 w-5 text-gold" />
+                    </div>
+                    <div>
+                      <p className="font-body text-sm font-bold text-foreground">Garantía Riesgo Cero</p>
+                      <p className="font-body text-xs text-muted-foreground mt-1">
+                        Cancela gratis hasta 3 días (72h) antes de tu salida. La tarjeta solo se solicita como garantía frente a cancelaciones tardías.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <Button onClick={handleSubmit} size="lg" className="w-full bg-gold hover:bg-gold/90 text-gold-foreground font-body font-bold text-lg px-12 py-6 rounded-xl">
+                  Confirmar Reserva Gratuita
                 </Button>
+                <p className="font-body text-xs text-muted-foreground text-center mt-3">
+                  No se realizará ningún cargo hoy
+                </p>
               </div>
             )}
 
@@ -503,7 +588,7 @@ const BookingPage = () => {
                 </Button>
                 {step === 3 ? (
                   <Button onClick={goNext} disabled={!canGoNext()} size="lg" className="bg-gold hover:bg-gold/90 text-gold-foreground font-body font-bold px-8 py-5 rounded-xl disabled:opacity-40">
-                    <CreditCard className="h-5 w-5 mr-2" /> Continuar al pago
+                    Revisar y confirmar
                   </Button>
                 ) : (
                   <Button onClick={goNext} disabled={!canGoNext()} className="bg-primary hover:bg-primary/90 text-primary-foreground font-body font-semibold px-8 rounded-xl disabled:opacity-40">
@@ -515,7 +600,7 @@ const BookingPage = () => {
           </div>
 
           {/* Right: Summary Sidebar */}
-          <div className="lg:sticky lg:top-8 self-start">
+          <div className="lg:sticky lg:top-8 self-start space-y-4">
             <div className="bg-card rounded-2xl border border-border shadow-card overflow-hidden p-6">
               <div className="flex items-center gap-2 mb-5">
                 <h3 className="font-display text-xl font-bold text-foreground">Resumen</h3>
@@ -534,7 +619,7 @@ const BookingPage = () => {
                   <div>
                     <p className="font-display text-sm font-bold text-foreground">{selectedBoat.name}</p>
                     <p className="font-body text-xs text-muted-foreground flex items-center gap-1 mt-0.5">
-                      <Users className="h-3 w-3" /> Hasta {selectedBoat.capacity} pers.
+                      <Users className="h-3 w-3" /> {selectedBoat.capacity} pers. · <Zap className="h-3 w-3" /> {selectedBoat.power}
                     </p>
                     <div className="flex flex-wrap gap-2 mt-2">
                       <span className="inline-flex items-center gap-1 bg-primary/8 text-primary font-body text-[10px] font-semibold px-2 py-1 rounded-md">
@@ -612,30 +697,69 @@ const BookingPage = () => {
               </div>
 
               {/* Total */}
-              <div className="mt-4 bg-gold/10 rounded-xl p-4 flex items-end justify-between">
-                <span className="font-body font-bold text-primary text-sm">Total</span>
-                <div className="text-right">
-                  <span className="font-display text-3xl font-bold text-foreground">{finalPrice}€</span>
-                  {isVip && selectedBoat && (
-                    <p className="font-body text-xs text-muted-foreground">
-                      {Math.round(finalPrice / selectedBoat.capacity)}€/persona
-                    </p>
-                  )}
+              <div className="mt-4 bg-gold/10 rounded-xl p-4">
+                <div className="flex items-end justify-between">
+                  <span className="font-body font-bold text-primary text-sm">A pagar en puerto</span>
+                  <div className="text-right">
+                    <span className="font-display text-3xl font-bold text-foreground">{finalPrice}€</span>
+                    {isVip && selectedBoat && (
+                      <p className="font-body text-xs text-muted-foreground">
+                        {Math.round(finalPrice / selectedBoat.capacity)}€/persona
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Payment today = 0 */}
+              <div className="mt-3 bg-emerald-50 dark:bg-emerald-950/30 rounded-xl p-4 border border-emerald-200 dark:border-emerald-800">
+                <div className="flex items-center justify-between">
+                  <span className="font-body text-sm font-bold text-emerald-700 dark:text-emerald-400">Pago hoy</span>
+                  <span className="font-display text-2xl font-bold text-emerald-600 dark:text-emerald-400">0 €</span>
                 </div>
               </div>
 
               {/* Fianza */}
-              <div className="mt-4 bg-gold/8 rounded-xl p-4 border border-gold/15">
-                <p className="font-body text-sm font-bold text-primary">Fianza: 400€</p>
-                <p className="font-body text-xs text-muted-foreground mt-0.5">Se abona el día del servicio en el puerto.</p>
+              <div className="mt-3 bg-muted rounded-xl p-4">
+                <p className="font-body text-xs font-bold text-foreground">Fianza: 400€</p>
+                <p className="font-body text-[10px] text-muted-foreground mt-0.5">Preautorización con datáfono · Se libera al finalizar</p>
               </div>
 
-              {/* Garantía */}
+              {/* Guarantee */}
               <div className="mt-4 flex items-start gap-2">
                 <ShieldCheck className="h-4 w-4 text-accent flex-shrink-0 mt-0.5" />
                 <p className="font-body text-xs text-muted-foreground leading-relaxed">
-                  <strong>Garantía Riesgo Cero:</strong> si hace mal tiempo, reprogramamos o devolvemos el 100%
+                  <strong>Garantía Riesgo Cero:</strong> Cancela gratis hasta 72h antes
                 </p>
+              </div>
+
+              {/* Payment methods */}
+              <div className="mt-4 flex items-center justify-center gap-4 pt-3 border-t border-border">
+                <span className="inline-flex items-center gap-1.5 font-body text-[10px] text-muted-foreground">
+                  <CreditCard className="h-3.5 w-3.5" /> Datáfono
+                </span>
+                <span className="inline-flex items-center gap-1.5 font-body text-[10px] text-muted-foreground">
+                  <Banknote className="h-3.5 w-3.5" /> Efectivo
+                </span>
+              </div>
+            </div>
+
+            {/* What's included */}
+            <div className="bg-card rounded-2xl border border-border shadow-card p-6">
+              <p className="font-body text-xs font-bold text-foreground mb-3">¿Qué incluye el alquiler?</p>
+              <div className="grid grid-cols-2 gap-2">
+                <span className="inline-flex items-center gap-1.5 font-body text-[10px] text-muted-foreground bg-muted px-2.5 py-2 rounded-lg">
+                  <ShieldCheck className="h-3.5 w-3.5 text-primary" /> Seguro a todo riesgo
+                </span>
+                <span className="inline-flex items-center gap-1.5 font-body text-[10px] text-muted-foreground bg-muted px-2.5 py-2 rounded-lg">
+                  <Anchor className="h-3.5 w-3.5 text-primary" /> Amarre incluido
+                </span>
+                <span className="inline-flex items-center gap-1.5 font-body text-[10px] text-muted-foreground bg-muted px-2.5 py-2 rounded-lg">
+                  <Sparkle className="h-3.5 w-3.5 text-primary" /> Limpieza
+                </span>
+                <span className="inline-flex items-center gap-1.5 font-body text-[10px] text-muted-foreground bg-muted px-2.5 py-2 rounded-lg">
+                  <Waves className="h-3.5 w-3.5 text-primary" /> Nevera a bordo
+                </span>
               </div>
             </div>
           </div>

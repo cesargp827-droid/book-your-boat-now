@@ -14,7 +14,7 @@ const HeroSection = () => {
 
   return (
     <>
-      {/* Hero — immersive, giant typography, left-aligned */}
+      {/* Hero */}
       <section id="hero" className="relative min-h-screen flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img
@@ -34,7 +34,6 @@ const HeroSection = () => {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 lg:px-8 pb-20 lg:pb-28 pt-32">
-          {/* Staggered reveal: tag → title → subtitle → CTA */}
           <p className="animate-fade-up font-body font-semibold text-gold tracking-[0.35em] uppercase text-xs lg:text-sm mb-6">
             Port Ginesta · Castelldefels
           </p>
@@ -47,11 +46,11 @@ const HeroSection = () => {
             Experiencias náuticas premium en Castelldefels. 3 años de experiencia técnica especializada en la costa del Garraf.
           </p>
 
-          {/* Trust badge inline */}
+          {/* Trust badge — new guarantee */}
           <div className="animate-fade-up-delay-2 flex items-center gap-3 mt-6 text-ocean-foreground/50 font-body text-sm">
             <Shield className="h-4 w-4 text-gold" />
             <span>
-              <strong className="text-ocean-foreground/80">Garantía Riesgo Cero</strong> — devolución íntegra si el clima no acompaña
+              <strong className="text-ocean-foreground/80">Garantía Riesgo Cero</strong> — Cancela gratis hasta 72h antes de tu salida
             </span>
           </div>
 
@@ -75,7 +74,7 @@ const HeroSection = () => {
         </div>
       </section>
 
-      {/* About / Story — with video background */}
+      {/* About / Story */}
       <section id="about" className="py-28 lg:py-36 bg-sand">
         <div className="container mx-auto px-4" ref={aboutRef}>
           <div className="max-w-6xl mx-auto">
@@ -137,7 +136,7 @@ const HeroSection = () => {
                   <Shield className="h-5 w-5 text-primary" />
                 </div>
                 <p className="font-display text-2xl font-bold text-foreground mb-1">Riesgo Cero</p>
-                <p className="font-body text-muted-foreground text-sm">devolución si el clima falla</p>
+                <p className="font-body text-muted-foreground text-sm">cancela gratis hasta 72h antes</p>
               </div>
             </div>
           </div>
