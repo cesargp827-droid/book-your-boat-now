@@ -1,4 +1,4 @@
-import { Clock, Gift, ShieldCheck, Sparkles, Users, Droplets, ArrowRight, Shield } from "lucide-react";
+import { Clock, Gift, ShieldCheck, Sparkles, Users, Droplets, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useSkipper } from "@/context/SkipperContext";
@@ -142,6 +142,10 @@ const OffersSection = () => {
                       Más Popular
                     </div>
                   )}
+                  {/* Guarantee badge */}
+                  <div className="absolute top-4 right-4 bg-ocean-foreground/10 backdrop-blur-sm text-ocean-foreground font-body text-[9px] font-bold px-2.5 py-1 rounded-md flex items-center gap-1">
+                    <ShieldCheck className="h-3 w-3 text-gold" /> Riesgo Cero
+                  </div>
                   <div className="absolute bottom-4 left-5 right-5">
                     <h3 className="font-display text-xl font-bold">{o.boat}</h3>
                     <p className="font-body text-xs text-ocean-foreground/50 flex items-center gap-1.5 mt-1">
@@ -171,7 +175,7 @@ const OffersSection = () => {
 
                   <div className="mt-auto space-y-3">
                     <p className="font-body text-xs text-ocean-foreground/30 text-center">
-                      Fianza: 400€ el día del servicio
+                      Fianza: 400€ · Preautorización con datáfono
                     </p>
                     <Button
                       onClick={() => goToBooking(o.boatValue)}
@@ -197,11 +201,10 @@ const OffersSection = () => {
                 Garantía Riesgo Cero
               </h4>
               <p className="font-body text-ocean-foreground/50 leading-relaxed">
-                Si el día de tu reserva el tiempo no acompaña en Castelldefels,{" "}
                 <strong className="text-ocean-foreground">
-                  reprogramamos tu salida o te devolvemos el dinero íntegramente.
+                  Cancela gratis hasta 3 días (72h) antes de tu salida.
                 </strong>{" "}
-                El riesgo lo asumimos nosotros, tú solo disfruta.
+                Reserva sin compromiso — el riesgo lo asumimos nosotros, tú solo disfruta.
               </p>
             </div>
           </div>

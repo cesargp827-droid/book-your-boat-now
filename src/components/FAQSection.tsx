@@ -6,12 +6,16 @@ const faqs = [
     a: "Sí, todas nuestras embarcaciones requieren licencia de navegación válida. El patrón debe presentarla el día del servicio en el puerto antes de la salida.",
   },
   {
-    q: "¿Cómo funciona la fianza de 400 €?",
-    a: "La fianza de 400 € se paga el mismo día del servicio en el puerto, antes de embarcar. Se devuelve íntegramente al finalizar la navegación si la embarcación se entrega en las mismas condiciones.",
+    q: "¿Cuándo y cómo se paga el alquiler?",
+    a: "La reserva es completamente gratuita. El importe total del alquiler se abona el mismo día del servicio, antes de embarcar, mediante datáfono (tarjeta) o efectivo. No se realiza ningún cargo en el momento de la reserva.",
   },
   {
-    q: "¿Qué pasa si el día de mi reserva hace mal tiempo?",
-    a: "Aplicamos nuestra Garantía de Riesgo Cero: si las condiciones meteorológicas no son aptas para navegar, reprogramamos tu salida a otra fecha o te devolvemos el dinero íntegramente sin preguntas.",
+    q: "¿Cómo funciona la fianza de 400 €?",
+    a: "La fianza de 400 € se gestiona mediante una preautorización con datáfono el día del servicio, antes de embarcar. No se cobra dinero — solo se retiene temporalmente. Se libera automáticamente al finalizar la navegación si la embarcación se entrega en perfectas condiciones.",
+  },
+  {
+    q: "¿Puedo cancelar mi reserva?",
+    a: "Sí. Con nuestra Garantía Riesgo Cero, puedes cancelar gratis hasta 3 días (72h) antes de tu salida. Sin preguntas ni cargos.",
   },
   {
     q: "¿Qué incluye el Pack VIP?",
@@ -22,8 +26,8 @@ const faqs = [
     a: "Todas nuestras embarcaciones salen desde Port Ginesta, en Castelldefels, en la exclusiva Costa del Garraf. A solo 30 minutos de Barcelona.",
   },
   {
-    q: "¿Cómo funciona el proceso de reserva y pago?",
-    a: "Selecciona tu embarcación y fecha, envía la solicitud de reserva y te contactaremos para confirmar disponibilidad. El pago se realiza por adelantado para asegurar tu plaza. La fianza se abona el día del servicio.",
+    q: "¿Qué incluye el alquiler?",
+    a: "Todas las embarcaciones incluyen seguros a todo riesgo, amarre, limpieza, nevera, ducha de agua dulce y altavoces Bluetooth de alta calidad.",
   },
 ];
 
